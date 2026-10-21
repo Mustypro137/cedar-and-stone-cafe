@@ -4,7 +4,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 > Cedar & Stone Café is not a real business. All menu items, prices, reviews, opening hours and contact details are sample content.
 
-**Status:** complete. Built in 11 milestones, then given an Art Deco redesign (1920s hotel café: black, champagne and gold).
+**Status:** complete. Built in 11 milestones, then redesigned in Art Deco stages (1920s hotel café: black, champagne and gold).
 
 **Live site:** https://mustypro137.github.io/cedar-and-stone-cafe/
 
@@ -18,7 +18,9 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - Customer reviews (clearly marked as fictional)
 - Interactive FAQ accordion
 - Contact form with client-side validation (demo only, it does not send messages)
-- Footer with contact information and a band of gold diamonds
+- Framed café photograph between the hero and the About section
+- Footer with contact information, a link to this repository and a band of gold diamonds
+- Link-preview tags (Open Graph and Twitter card) so shared links show a title and photo
 - Smooth anchor scrolling that accounts for the fixed header
 
 ## Design
@@ -36,8 +38,16 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - Every text and control colour pair checked against WCAG AA (4.5:1 for text, 3:1 for UI components); the lowest ratio in use is 5.20:1.
 - Works without JavaScript: all content stays visible, the header stays solid, and the opening hours show as a plain table. Only the enhancements are skipped.
 - Opening-hours bars are decorative and hidden from assistive technology; the table and its `<time>` elements carry the information.
-- No horizontal overflow from 320px to 1440px.
-- Two font files (about 14 KB and 29 KB, `font-display: swap`, both preloaded), a 2 KB SVG, no raster images, and a script loaded with `defer`.
+- No horizontal overflow at 375, 430, 768, 1024 and 1440px.
+- Light assets: two font files (about 14 KB and 29 KB, `font-display: swap`, both preloaded), a 2 KB SVG, one 49 KB (desktop) or 54 KB (phone) WebP photo loaded lazily, and a script loaded with `defer`. The 114 KB `og-image.jpg` is only fetched by link previews.
+
+## Testing
+
+Checked with headless Chrome (device emulation) and the axe-core accessibility engine; there is no lint or build step.
+
+- **Passed:** no overflow at the five widths above; nav toggle, menu filters, FAQ and form validation; real Tab-key walk with a visible focus ring on every stop (Chrome and Edge); no-JavaScript and reduced-motion behaviour; no broken images or dead links; axe-core reported 0 violations at 375px and 1280px (WCAG 2.0 to 2.2 A/AA plus best practice).
+- **Not checked by a tool:** four footer text items, because axe cannot read the decorative band behind them; their colour pairs were calculated by hand and pass.
+- **Still to test by hand:** a real phone, Safari, Firefox, a screen reader, 200% zoom, and how the link preview looks once shared.
 
 ## Technologies
 
@@ -47,18 +57,25 @@ HTML5, CSS3 (custom properties, Grid, Flexbox), vanilla JavaScript (ES6+, `Inter
 
 Open `index.html` in a browser, or use the VS Code Live Server extension.
 
+## Publish
+
+The site is served by GitHub Pages from the `main` branch. Commit your changes and run `git push origin main`; the live site updates within a minute or two (hard-refresh with Ctrl+Shift+R if you still see the old version).
+
 ## Project structure
 
 ```
 index.html
 style.css
 script.js
-images/hero.svg
-fonts/            Marcellus and Josefin Sans, with their OFL licences
+images/hero.svg              hero illustration
+images/cafe-banner.webp      photo band, 19:6 (tablet and up)
+images/cafe-banner-mobile.webp  photo band, 2:1 (phones)
+images/og-image.jpg          link-preview image (1200x629)
+fonts/                       Marcellus and Josefin Sans, with their OFL licences
 README.md
 LICENSE
 ```
 
 ## License
 
-MIT. See [LICENSE](LICENSE). The Marcellus and Josefin Sans font files are licensed separately under the SIL Open Font License; see `fonts/OFL-*.txt`.
+MIT. See [LICENSE](LICENSE). The café photograph was supplied by the project owner, who is responsible for its usage rights. The Marcellus and Josefin Sans font files are licensed separately under the SIL Open Font License; see `fonts/OFL-*.txt`.

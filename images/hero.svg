@@ -1,46 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
   <defs>
     <radialGradient id="glow" cx="400" cy="640" r="420" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#d4af37" stop-opacity=".28"/>
-      <stop offset="1" stop-color="#d4af37" stop-opacity="0"/>
+      <stop offset="0" stop-color="#c8a15a" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#c8a15a" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="800" height="1000" fill="#141414"/>
+  <rect width="800" height="1000" fill="#261a13"/>
   <rect width="800" height="1000" fill="url(#glow)"/>
 
   <!-- Fan of rays rising from the table -->
-  <g stroke="#d4af37" stroke-width="2" opacity=".35">
+  <g stroke="#c8a15a" stroke-width="2" opacity=".35">
     <path d="M400 760L400 120M400 760L248 150M400 760L552 150M400 760L130 232M400 760L670 232M400 760L60 372M400 760L740 372"/>
   </g>
 
   <!-- Stepped arches -->
-  <g fill="none" stroke="#d4af37">
+  <g fill="none" stroke="#c8a15a">
     <path d="M120 760V400a280 280 0 0 1 560 0v360" stroke-width="3"/>
     <path d="M152 760V400a248 248 0 0 1 496 0v360" stroke-width="1.5" opacity=".7"/>
     <path d="M184 760V400a216 216 0 0 1 432 0v360" stroke-width="1.5" opacity=".4"/>
   </g>
 
   <!-- Keystone diamond -->
-  <path d="M400 92l22 22-22 22-22-22z" fill="#d4af37"/>
+  <path d="M400 92l22 22-22 22-22-22z" fill="#c8a15a"/>
 
   <!-- Table -->
-  <rect y="760" width="800" height="240" fill="#0a0a0a"/>
-  <path d="M0 760H800" stroke="#d4af37" stroke-width="3"/>
-  <path d="M0 784H800" stroke="#d4af37" stroke-width="1" opacity=".5"/>
+  <rect y="760" width="800" height="240" fill="#1b120d"/>
+  <path d="M0 760H800" stroke="#c8a15a" stroke-width="3"/>
+  <path d="M0 784H800" stroke="#c8a15a" stroke-width="1" opacity=".5"/>
 
   <!-- Saucer and cup -->
   <ellipse cx="400" cy="800" rx="210" ry="30" fill="#000" opacity=".5"/>
-  <ellipse cx="400" cy="788" rx="210" ry="30" fill="#d4af37"/>
-  <ellipse cx="400" cy="782" rx="170" ry="21" fill="#0a0a0a"/>
-  <ellipse cx="400" cy="780" rx="150" ry="16" fill="#d4af37"/>
-  <path d="M508 650h28a42 42 0 0 1 0 84h-30" fill="none" stroke="#d4af37" stroke-width="14" stroke-linecap="round"/>
-  <path d="M290 620h220v50a110 110 0 0 1-220 0z" fill="#f2f0e4"/>
-  <path d="M290 640h220" stroke="#d4af37" stroke-width="4"/>
-  <ellipse cx="400" cy="620" rx="110" ry="16" fill="#0a0a0a"/>
-  <ellipse cx="400" cy="620" rx="92" ry="10" fill="#6b4a2b"/>
+  <ellipse cx="400" cy="788" rx="210" ry="30" fill="#c8a15a"/>
+  <ellipse cx="400" cy="782" rx="170" ry="21" fill="#1b120d"/>
+  <ellipse cx="400" cy="780" rx="150" ry="16" fill="#c8a15a"/>
+  <path d="M508 650h28a42 42 0 0 1 0 84h-30" fill="none" stroke="#c8a15a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M290 620h220v50a110 110 0 0 1-220 0z" fill="#f3e9da"/>
+  <path d="M290 640h220" stroke="#c8a15a" stroke-width="4"/>
+  <ellipse cx="400" cy="620" rx="110" ry="16" fill="#1b120d"/>
+  <ellipse cx="400" cy="620" rx="92" ry="10" fill="#6a3f26"/>
 
   <!-- Steam -->
-  <g fill="none" stroke="#f2f0e4" stroke-width="6" stroke-linecap="round" opacity=".75">
+  <g fill="none" stroke="#f3e9da" stroke-width="6" stroke-linecap="round" opacity=".75">
     <path d="M365 575c-22-30 22-50 0-92"/>
     <path d="M400 565c-22-30 22-50 0-102"/>
     <path d="M435 575c-22-30 22-50 0-92"/>

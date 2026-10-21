@@ -7,53 +7,54 @@
 /* 1. Design tokens
    -------------------------------------------------------------------------- */
 @font-face {
-  font-family: "Marcellus";
-  src: url("fonts/marcellus-latin-400-normal.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Playfair Display";
+  src: url("fonts/playfair-display-latin-wght-normal.woff2") format("woff2");
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Josefin Sans";
-  src: url("fonts/josefin-sans-latin-wght-normal.woff2") format("woff2");
-  font-weight: 100 700;
+  font-family: "DM Sans";
+  src: url("fonts/dm-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 1000;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  /* Colour */
-  --color-black: #0a0a0a;
-  --color-card: #141414;
-  --color-cream: #f2f0e4;
-  --color-gold: #d4af37;
-  --color-gold-light: #f2e8c4;
-  --color-midnight: #1e3d59;
-  --color-muted: #888;
-  --color-cream-dim: #c9d0d6; /* readable secondary text on midnight */
+  /* Colour: warm espresso, brass and terracotta */
+  --color-espresso: #1b120d;
+  --color-card: #261a13;
+  --color-cream: #f3e9da;
+  --color-gold: #c8a15a; /* brass */
+  --color-gold-light: #e6ce98;
+  --color-band: #3a231a; /* hours band and contact panel */
+  --color-clay: #b5573a; /* terracotta accent, decorative only */
+  --color-muted: #a8978a;
+  --color-cream-dim: #d8ccbb; /* secondary text on the band */
   --color-error: #ff8f7a;
-  --color-rule: rgb(212 175 55 / 30%);
+  --color-rule: rgb(200 161 90 / 30%);
 
-  --color-bg: var(--color-black);
+  --color-bg: var(--color-espresso);
   --color-surface: var(--color-card);
   --color-text: var(--color-cream);
   --color-accent: var(--color-gold);
   --color-focus: var(--color-gold-light);
 
   /* Typography */
-  --font-body: "Josefin Sans", "Century Gothic", "Segoe UI", system-ui, sans-serif;
-  --font-heading: "Marcellus", "Trajan Pro", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-heading: "Playfair Display", Georgia, "Times New Roman", serif;
 
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-md: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   --text-lg: clamp(1.1875rem, 1.1rem + 0.45vw, 1.4375rem);
-  --text-xl: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
-  --text-2xl: clamp(2.25rem, 1.2rem + 5vw, 4.75rem);
+  --text-xl: clamp(1.875rem, 1.3rem + 2.2vw, 2.875rem);
+  --text-2xl: clamp(2.5rem, 1.4rem + 5vw, 4.75rem);
   --leading-body: 1.7;
-  --leading-heading: 1.15;
-  --tracking-display: 0.1em;
+  --leading-heading: 1.12;
+  --tracking-display: -0.005em;
   --tracking-label: 0.2em;
 
   /* Spacing: multiples of 8px */
@@ -79,8 +80,8 @@
 
   /* Art Deco patterns (pure CSS, no image files) */
   --pattern-crosshatch:
-    repeating-linear-gradient(45deg, rgb(212 175 55 / 5%) 0 1px, transparent 1px 10px),
-    repeating-linear-gradient(-45deg, rgb(212 175 55 / 5%) 0 1px, transparent 1px 10px);
+    repeating-linear-gradient(45deg, rgb(200 161 90 / 5%) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(-45deg, rgb(200 161 90 / 5%) 0 1px, transparent 1px 10px);
   --pattern-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --pattern-lattice:
     repeating-linear-gradient(45deg, var(--color-gold) 0 1px, transparent 1px 12px),
@@ -155,17 +156,16 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 400;
+  font-weight: 500;
   line-height: var(--leading-heading);
 }
 
 h1,
 h2 {
-  text-transform: uppercase;
   letter-spacing: var(--tracking-display);
 }
 
-h1 { font-size: var(--text-2xl); letter-spacing: 0.06em; }
+h1 { font-size: var(--text-2xl); line-height: 1.05; letter-spacing: -0.015em; }
 h2 { font-size: var(--text-xl); }
 h3 { font-size: var(--text-lg); }
 
@@ -223,7 +223,7 @@ a {
   left: var(--space-1);
   padding: var(--space-1) var(--space-2);
   background: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-espresso);
   transform: translateY(-200%);
 }
 
@@ -271,7 +271,7 @@ h2.reveal:not(.is-visible)::after {
   border: 1px solid var(--color-gold);
   border-radius: var(--radius-sm);
   background: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-espresso);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -307,7 +307,7 @@ h2.reveal:not(.is-visible)::after {
 
 .button-outline:hover {
   background: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-espresso);
 }
 
 /* Header and navigation */
@@ -349,9 +349,9 @@ h2.reveal:not(.is-visible)::after {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-heading);
-  font-size: 1rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--header-fg);
   text-decoration: none;
   transition: color var(--transition);
@@ -427,7 +427,7 @@ h2.reveal:not(.is-visible)::after {
 
 .nav-toggle[aria-expanded="true"] {
   background: var(--color-gold);
-  color: var(--color-black);
+  color: var(--color-espresso);
 }
 
 @media (max-width: 47.99rem) {
@@ -469,8 +469,7 @@ h2.reveal:not(.is-visible)::after {
 
 @media (max-width: 29.99rem) {
   .brand {
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
+    font-size: 1.0625rem;
   }
 }
 
@@ -592,7 +591,7 @@ h2.reveal:not(.is-visible)::after {
 }
 
 .frame img {
-  outline: 1px solid rgb(212 175 55 / 40%);
+  outline: 1px solid rgb(200 161 90 / 40%);
   outline-offset: -1px;
 }
 
@@ -640,7 +639,7 @@ main > .hero {
   position: absolute;
   z-index: -1;
   inset: -45%;
-  background: repeating-conic-gradient(from 0deg at 50% 55%, rgb(212 175 55 / 16%) 0 2deg, transparent 2deg 10deg);
+  background: repeating-conic-gradient(from 0deg at 50% 55%, rgb(200 161 90 / 16%) 0 2deg, transparent 2deg 10deg);
   -webkit-mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 62%);
   mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 62%);
 }
@@ -763,11 +762,11 @@ main > .hero {
 }
 
 main > .hours-band {
-  --hours-bg: var(--color-midnight);
+  --hours-bg: var(--color-band);
   --hours-text: var(--color-cream);
   --hours-muted: var(--color-cream-dim);
-  --hours-rule: rgb(212 175 55 / 35%);
-  --hours-track: rgb(242 240 228 / 18%);
+  --hours-rule: rgb(200 161 90 / 35%);
+  --hours-track: rgb(243 233 218 / 18%);
   --hours-fill: var(--color-gold);
 
   display: grid;
@@ -827,8 +826,6 @@ main > .hours-band {
   font-family: var(--font-heading);
   font-size: var(--text-md);
   font-weight: 400;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .hours-slot {
@@ -841,7 +838,7 @@ main > .hours-band {
   grid-area: time;
   font-family: var(--font-heading);
   font-size: var(--hours-time-size);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   text-align: right;
   white-space: nowrap;
 }
@@ -1002,7 +999,7 @@ main > .hours-band {
   aspect-ratio: 1;
   object-fit: cover;
   padding: 0.125rem;
-  border: 1px solid rgb(212 175 55 / 45%);
+  border: 1px solid rgb(200 161 90 / 45%);
   background: var(--color-card);
   transition: border-color var(--transition);
 }
@@ -1010,8 +1007,7 @@ main > .hours-band {
 .menu-card h3 {
   grid-area: name;
   font-size: var(--text-md);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-weight: 600;
   transition: color var(--transition);
 }
 
@@ -1020,7 +1016,7 @@ main > .hours-band {
   grid-area: leader;
   align-self: end;
   margin-bottom: 0.3em;
-  border-bottom: 2px dotted rgb(212 175 55 / 45%);
+  border-bottom: 2px dotted rgb(200 161 90 / 45%);
   transition: border-color var(--transition);
 }
 
@@ -1028,7 +1024,7 @@ main > .hours-band {
   grid-area: price;
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
   color: var(--color-gold);
 }
 
@@ -1094,7 +1090,7 @@ main > .hours-band {
   margin-bottom: var(--space-1);
   font-size: 3.5rem;
   line-height: 0.6;
-  color: var(--color-gold);
+  color: var(--color-clay);
 }
 
 .review-list figcaption {
@@ -1206,7 +1202,7 @@ main > .hours-band {
   min-height: 16rem;
   padding: var(--space-4) var(--space-3) 9rem;
   overflow: hidden;
-  background: var(--color-midnight);
+  background: var(--color-band);
 }
 
 /* Fan of gold rays rising from the bottom edge. */
@@ -1215,7 +1211,7 @@ main > .hours-band {
   position: absolute;
   inset: auto 0 0;
   height: 8rem;
-  background: repeating-conic-gradient(from -90deg at 50% 100%, rgb(212 175 55 / 55%) 0 1.5deg, transparent 1.5deg 9deg);
+  background: repeating-conic-gradient(from -90deg at 50% 100%, rgb(200 161 90 / 55%) 0 1.5deg, transparent 1.5deg 9deg);
   -webkit-mask-image: radial-gradient(circle at 50% 100%, #000 0, transparent 70%);
   mask-image: radial-gradient(circle at 50% 100%, #000 0, transparent 70%);
   pointer-events: none;
@@ -1256,9 +1252,9 @@ main > .hours-band {
   min-height: 3.25rem;
   padding: 0.875rem var(--space-2);
   border: 0;
-  border-bottom: 2px solid rgb(212 175 55 / 55%);
+  border-bottom: 2px solid rgb(200 161 90 / 55%);
   border-radius: 0;
-  background: rgb(242 240 228 / 6%);
+  background: rgb(243 233 218 / 6%);
   font-size: 1.0625rem;
   transition: border-color var(--transition), background var(--transition);
 }
@@ -1276,7 +1272,7 @@ main > .hours-band {
 .field input:focus,
 .field textarea:focus {
   border-bottom-color: var(--color-gold-light);
-  background: rgb(242 240 228 / 10%);
+  background: rgb(243 233 218 / 10%);
 }
 
 .field [aria-invalid="true"] {
@@ -1355,8 +1351,7 @@ main > .hours-band {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 1rem + 3.6vw, 4rem);
   line-height: 1.1;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: var(--color-gold);
 }
 

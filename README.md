@@ -4,9 +4,9 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 > Cedar & Stone Café is not a real business. All menu items, prices, reviews and contact details are sample content.
 
-**Status:** work in progress (Milestone 10 of 11: footer).
+**Status:** complete (Milestone 11 of 11: accessibility, responsive and performance pass).
 
-## Planned features
+## Features
 
 - Responsive navigation
 - Hero section with a clear call to action
@@ -17,6 +17,15 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - Contact form with client-side validation (demo only, it does not send messages)
 - Footer with contact information and social links
 - Accessibility, responsive design and basic performance optimisation
+
+## Accessibility and performance
+
+- Semantic landmarks, one `h1`, a logical heading order and a skip link.
+- Keyboard-operable navigation, menu filters, FAQ accordion and form, with visible focus styles and `aria-expanded`, `aria-pressed` and `aria-invalid` states.
+- Text and control colours checked against WCAG AA contrast (4.5:1 for body text).
+- Respects `prefers-reduced-motion`.
+- Works without JavaScript: all content stays visible and only the enhancements are skipped.
+- No images, web fonts or dependencies; the script is loaded with `defer`.
 
 ## Technologies
 

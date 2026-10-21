@@ -321,3 +321,56 @@ main > .hero {
 .hero :focus-visible {
   outline-color: var(--color-white);
 }
+
+.about {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.about-text p {
+  margin-top: var(--space-3);
+  max-width: 40rem;
+}
+
+.hours {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-sand);
+}
+
+.hours table {
+  width: 100%;
+  margin-top: var(--space-3);
+  border-collapse: collapse;
+}
+
+.hours th,
+.hours td {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid rgb(35 31 27 / 15%);
+  text-align: left;
+}
+
+.hours thead th {
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted);
+}
+
+.hours tbody tr:last-child th,
+.hours tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.hours tbody th {
+  font-weight: 600;
+}
+
+@media (min-width: 48rem) {
+  .about {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-6);
+  }
+}

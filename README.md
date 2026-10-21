@@ -4,40 +4,40 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 > Cedar & Stone Café is not a real business. All menu items, prices, reviews, opening hours and contact details are sample content.
 
-**Status:** complete. Built in 11 milestones, then given an editorial visual redesign in 8 stages.
+**Status:** complete. Built in 11 milestones, then given an Art Deco redesign (1920s hotel café: black, champagne and gold).
 
 **Live site:** https://mustypro137.github.io/cedar-and-stone-cafe/
 
 ## Features
 
 - Header that is transparent over the hero and turns solid as you scroll (or when the mobile menu is open), with a responsive navigation
-- Split hero with a clear call to action
+- Split hero with a framed Art Deco illustration, a sunburst and two clear actions
 - About section with a short facts list
 - Opening hours with a timeline drawn to scale from the listed times
 - Menu as typographic rows with working category filters
 - Customer reviews (clearly marked as fictional)
 - Interactive FAQ accordion
 - Contact form with client-side validation (demo only, it does not send messages)
-- Footer with contact information and social links
+- Footer with contact information and a band of gold diamonds
 - Smooth anchor scrolling that accounts for the fixed header
 
 ## Design
 
-- **Palette:** ivory and paper surfaces, espresso brown, muted olive and a clay accent, defined as CSS custom properties.
-- **Type:** Fraunces (a variable serif, self-hosted, SIL OFL) for headings, times and prices; the system sans-serif for body text.
-- **Layout:** left-aligned editorial layouts with asymmetric columns, hairline rules instead of cards and shadows, and alternating light and dark bands.
-- **Imagery:** one decorative SVG illustration (`images/hero.svg`). There are no photographs. To use a photo, replace `src` and `alt` on the hero `<img>`.
-- **Motion:** small, CSS-driven touches only (link underlines, button arrows, row hover, FAQ icon, and the opening-hours bars drawing in once). All of it is switched off by `prefers-reduced-motion`.
+- **Palette:** near-black `#0A0A0A`, champagne text `#F2F0E4`, card `#141414`, gold `#D4AF37` (hover `#F2E8C4`), midnight blue `#1E3D59` and muted `#888`, all defined once as CSS custom properties in `style.css`. Gold is kept for headings, borders, labels and actions.
+- **Type:** Marcellus for headings (uppercase, tracked) and Josefin Sans for body text, both self-hosted (SIL OFL).
+- **Art Deco details (all CSS, no image files):** diagonal crosshatch backgrounds, a sunburst behind the hero, diamonds, stepped corner brackets, a double gold frame, Roman-numeral section labels (I to VI), gold dividers that draw in, and a diamond lattice band above the footer.
+- **Imagery:** one illustration, `images/hero.svg`. There are no photographs. To use a photo, replace `src` and `alt` on the hero `<img>` (it keeps the frame).
+- **Motion:** about 300 ms transitions (buttons, links, cards, FAQ) and a gentle scroll reveal, all switched off by `prefers-reduced-motion`.
 
 ## Accessibility and performance
 
 - Semantic landmarks, one `h1`, a logical heading order and a skip link that sits above the fixed header.
 - Keyboard-operable navigation, menu filters, FAQ accordion and form, with visible focus styles and `aria-expanded`, `aria-pressed` and `aria-invalid` states.
-- Every text and control colour pair checked against WCAG AA (4.5:1 for text, 3:1 for UI components); the lowest ratio in use is 5.45:1.
+- Every text and control colour pair checked against WCAG AA (4.5:1 for text, 3:1 for UI components); the lowest ratio in use is 5.20:1.
 - Works without JavaScript: all content stays visible, the header stays solid, and the opening hours show as a plain table. Only the enhancements are skipped.
 - Opening-hours bars are decorative and hidden from assistive technology; the table and its `<time>` elements carry the information.
 - No horizontal overflow from 320px to 1440px.
-- Two font files (about 37 KB and 46 KB, `font-display: swap`, both preloaded), a 1 KB SVG, no raster images, and a script loaded with `defer`.
+- Two font files (about 14 KB and 29 KB, `font-display: swap`, both preloaded), a 2 KB SVG, no raster images, and a script loaded with `defer`.
 
 ## Technologies
 
@@ -54,11 +54,11 @@ index.html
 style.css
 script.js
 images/hero.svg
-fonts/            Fraunces (normal and italic) and its OFL licence
+fonts/            Marcellus and Josefin Sans, with their OFL licences
 README.md
 LICENSE
 ```
 
 ## License
 
-MIT. See [LICENSE](LICENSE). The Fraunces font files are licensed separately under the SIL Open Font License; see `fonts/OFL.txt`.
+MIT. See [LICENSE](LICENSE). The Marcellus and Josefin Sans font files are licensed separately under the SIL Open Font License; see `fonts/OFL-*.txt`.

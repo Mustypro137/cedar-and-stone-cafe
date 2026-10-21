@@ -1,68 +1,72 @@
 /* ==========================================================================
-   Cedar & Stone Café
-   1. Design tokens  2. Reset  3. Base  4. Layout  5. Components  6. Sections
+   Cedar & Stone Café: Art Deco
+   1. Design tokens  2. Reset  3. Base  4. Layout  5. Components
+   6. Ornaments  7. Sections
    ========================================================================== */
 
 /* 1. Design tokens
    -------------------------------------------------------------------------- */
 @font-face {
-  font-family: "Fraunces";
-  src: url("fonts/fraunces-latin-wght-normal.woff2") format("woff2");
-  font-weight: 100 900;
+  font-family: "Marcellus";
+  src: url("fonts/marcellus-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Fraunces";
-  src: url("fonts/fraunces-latin-wght-italic.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
+  font-family: "Josefin Sans";
+  src: url("fonts/josefin-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
   font-display: swap;
 }
 
 :root {
   /* Colour */
-  --color-ivory: #f6f0e4;
-  --color-paper: #fbf8f1;
-  --color-sand: #ebe2cf;
-  --color-espresso: #2b1d14;
-  --color-olive: #4a5030;
-  --color-clay: #9a4a31;
-  --color-muted: #5e5145;
-  --color-error: #a12a12;
-  --color-white: #fff;
-  --color-rule: rgb(43 29 20 / 15%);
+  --color-black: #0a0a0a;
+  --color-card: #141414;
+  --color-cream: #f2f0e4;
+  --color-gold: #d4af37;
+  --color-gold-light: #f2e8c4;
+  --color-midnight: #1e3d59;
+  --color-muted: #888;
+  --color-cream-dim: #c9d0d6; /* readable secondary text on midnight */
+  --color-error: #ff8f7a;
+  --color-rule: rgb(212 175 55 / 30%);
 
-  --color-bg: var(--color-ivory);
-  --color-surface: var(--color-paper);
-  --color-text: var(--color-espresso);
-  --color-accent: var(--color-clay);
-  --color-focus: var(--color-olive);
+  --color-bg: var(--color-black);
+  --color-surface: var(--color-card);
+  --color-text: var(--color-cream);
+  --color-accent: var(--color-gold);
+  --color-focus: var(--color-gold-light);
 
   /* Typography */
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Josefin Sans", "Century Gothic", "Segoe UI", system-ui, sans-serif;
+  --font-heading: "Marcellus", "Trajan Pro", Georgia, "Times New Roman", serif;
 
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
-  --text-lg: clamp(1.1875rem, 1.1rem + 0.45vw, 1.375rem);
-  --text-xl: clamp(1.75rem, 1.3rem + 2vw, 2.75rem);
-  --text-2xl: clamp(2.5rem, 1.5rem + 5vw, 5rem);
-  --leading-body: 1.65;
-  --leading-heading: 1.1;
+  --text-md: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-lg: clamp(1.1875rem, 1.1rem + 0.45vw, 1.4375rem);
+  --text-xl: clamp(1.75rem, 1.2rem + 2vw, 2.75rem);
+  --text-2xl: clamp(2.25rem, 1.2rem + 5vw, 4.75rem);
+  --leading-body: 1.7;
+  --leading-heading: 1.15;
+  --tracking-display: 0.1em;
+  --tracking-label: 0.2em;
 
-  /* Spacing */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 1rem;
-  --space-4: 1.5rem;
-  --space-5: 2.5rem;
-  --space-6: 4rem;
-  --space-section: clamp(3rem, 2rem + 3.5vw, 4.5rem);
+  /* Spacing: multiples of 8px */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 5rem;
+  --space-section: clamp(4rem, 3rem + 4vw, 6rem);
 
   /* Shape */
-  --radius-sm: 0.125rem;
+  --radius-sm: 0;
 
   /* Layout */
   --container-max: 70rem;
@@ -70,7 +74,16 @@
   --header-height: 4.5rem;
 
   /* Motion */
-  --transition: 200ms ease;
+  --transition: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Art Deco patterns (pure CSS, no image files) */
+  --pattern-crosshatch:
+    repeating-linear-gradient(45deg, rgb(212 175 55 / 5%) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(-45deg, rgb(212 175 55 / 5%) 0 1px, transparent 1px 10px);
+  --pattern-lattice:
+    repeating-linear-gradient(45deg, var(--color-gold) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(-45deg, var(--color-gold) 0 1px, transparent 1px 12px);
 }
 
 /* 2. Reset
@@ -118,6 +131,7 @@ ol[role="list"] {
    -------------------------------------------------------------------------- */
 body {
   min-height: 100vh;
+  overflow-x: clip;
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-body);
@@ -129,21 +143,34 @@ h1,
 h2,
 h3 {
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--leading-heading);
-  letter-spacing: -0.015em;
 }
 
-[hidden] {
-  display: none !important;
+h1,
+h2 {
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-display);
 }
 
-h1 { font-size: var(--text-2xl); }
+h1 { font-size: var(--text-2xl); letter-spacing: 0.06em; }
 h2 { font-size: var(--text-xl); }
 h3 { font-size: var(--text-lg); }
 
+/* Short gold rule under each section heading; drawn in by .reveal. */
+h2::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 1px;
+  margin-top: var(--space-3);
+  background: var(--color-gold);
+  transform-origin: left;
+  transition: transform var(--transition-slow) 200ms;
+}
+
 a {
-  color: var(--color-olive);
+  color: var(--color-gold);
 }
 
 :focus-visible {
@@ -162,6 +189,7 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }
 
@@ -179,11 +207,11 @@ a {
 .skip-link {
   position: absolute;
   z-index: 20;
-  top: var(--space-2);
-  left: var(--space-2);
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-olive);
-  color: var(--color-white);
+  top: var(--space-1);
+  left: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  background: var(--color-gold);
+  color: var(--color-black);
   transform: translateY(-200%);
 }
 
@@ -197,25 +225,48 @@ main > section {
   padding-block: var(--space-section);
 }
 
+/* Full-width band; its content stays aligned with the page container. */
+main > .band {
+  width: 100%;
+  padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
+  background-color: var(--color-surface);
+  background-image: var(--pattern-crosshatch);
+}
+
+/* Scroll reveal. script.js adds .reveal, so nothing is hidden without JavaScript. */
+.reveal {
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+h2.reveal:not(.is-visible)::after {
+  transform: scaleX(0);
+}
+
 /* 5. Components
    -------------------------------------------------------------------------- */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
   min-height: 2.75rem;
-  padding: var(--space-2) var(--space-4);
-  border: 1px solid transparent;
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-gold);
   border-radius: var(--radius-sm);
-  background: var(--color-espresso);
-  color: var(--color-ivory);
-  font-size: 0.9375rem;
+  background: var(--color-gold);
+  color: var(--color-black);
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), transform var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
 }
 
 .button::after {
@@ -225,7 +276,8 @@ main > section {
 }
 
 .button:hover {
-  background: var(--color-olive);
+  background: transparent;
+  color: var(--color-gold);
 }
 
 .button:hover::after {
@@ -236,30 +288,21 @@ main > section {
   transform: translateY(1px);
 }
 
-.button-light {
-  background: var(--color-ivory);
-  color: var(--color-espresso);
-}
-
-.button-light:hover {
-  background: var(--color-sand);
-}
-
 .button-outline {
-  border-color: currentcolor;
   background: transparent;
-  color: var(--color-white);
+  color: var(--color-gold);
 }
 
 .button-outline:hover {
-  background: rgb(255 255 255 / 12%);
+  background: var(--color-gold);
+  color: var(--color-black);
 }
 
 /* Header and navigation */
 .site-header {
   --header-fg: var(--color-text);
-  --header-hover: var(--color-olive);
-  --header-line: rgb(43 29 20 / 12%);
+  --header-hover: var(--color-gold);
+  --header-line: var(--color-rule);
 
   position: fixed;
   inset: 0 0 auto;
@@ -268,10 +311,10 @@ main > section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-1) var(--space-3);
   min-height: var(--header-height);
-  padding: var(--space-2) max(var(--gutter), (100% - var(--container-max)) / 2);
-  background: var(--color-surface);
+  padding: var(--space-1) max(var(--gutter), (100% - var(--container-max)) / 2);
+  background: var(--color-bg);
   border-bottom: 1px solid var(--header-line);
   transition: background var(--transition), border-color var(--transition);
 }
@@ -282,32 +325,33 @@ main > section {
   transition: none !important;
 }
 
-/* Over the hero (JS adds .is-over-hero) the header is transparent with light text. */
+/* Over the hero (JS adds .is-over-hero) the header is transparent. */
 .site-header.is-over-hero:not(.is-menu-open) {
-  --header-fg: var(--color-ivory);
-  --header-hover: var(--color-sand);
   --header-line: transparent;
 
   background: transparent;
 }
 
-.site-header.is-over-hero:not(.is-menu-open) .button {
-  background: var(--color-ivory);
-  color: var(--color-espresso);
-}
-
-.site-header.is-over-hero:not(.is-menu-open) .button:hover {
-  background: var(--color-sand);
-}
-
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--header-fg);
   text-decoration: none;
   transition: color var(--transition);
+}
+
+.brand::before {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-gold);
+  transform: rotate(45deg);
 }
 
 .brand:hover {
@@ -324,11 +368,12 @@ main > section {
 .site-nav a:not(.button) {
   position: relative;
   display: inline-block;
-  padding: var(--space-2) 0;
+  padding: var(--space-1) 0;
   color: var(--header-fg);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   text-decoration: none;
   transition: color var(--transition);
 }
@@ -355,21 +400,22 @@ main > section {
 
 .nav-toggle {
   min-height: 2.75rem;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--header-fg);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-gold);
   border-radius: var(--radius-sm);
   background: transparent;
-  color: var(--header-fg);
-  font-size: 0.9375rem;
+  color: var(--color-gold);
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition: background var(--transition), color var(--transition);
 }
 
 .nav-toggle[aria-expanded="true"] {
-  background: var(--color-espresso);
-  color: var(--color-ivory);
+  background: var(--color-gold);
+  color: var(--color-black);
 }
 
 @media (max-width: 47.99rem) {
@@ -380,7 +426,7 @@ main > section {
 
   .js .site-nav.is-open {
     display: block;
-    padding-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
   }
 
   .js .site-nav ul {
@@ -390,14 +436,13 @@ main > section {
   }
 
   .js .site-nav li {
-    border-top: 1px solid rgb(43 29 20 / 12%);
+    border-top: 1px solid var(--color-rule);
   }
 
   .js .site-nav a:not(.button) {
     display: block;
-    padding: var(--space-3) 0;
-    font-family: var(--font-heading);
-    font-size: var(--text-lg);
+    padding: var(--space-2) 0;
+    font-size: 0.9375rem;
   }
 
   .js .site-nav a:not(.button)::after {
@@ -406,7 +451,14 @@ main > section {
 
   .js .site-nav .button {
     width: 100%;
-    margin-top: var(--space-3);
+    margin-top: var(--space-2);
+  }
+}
+
+@media (max-width: 29.99rem) {
+  .brand {
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
   }
 }
 
@@ -416,57 +468,155 @@ main > section {
   }
 }
 
-/* 6. Sections
+/* 6. Ornaments
+   -------------------------------------------------------------------------- */
+/* Section label: Roman numeral in a diamond, label, then a gold rule. */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.eyebrow::after {
+  content: "";
+  flex: 0 1 4rem;
+  height: 1px;
+  background: currentcolor;
+  opacity: 0.6;
+}
+
+.numeral {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+}
+
+.numeral::before {
+  content: "";
+  position: absolute;
+  inset: 0.5rem;
+  border: 1px solid var(--color-gold);
+  transform: rotate(45deg);
+}
+
+/* Stepped corner brackets on the top-left and bottom-right of a framed block. */
+.frame,
+.review-list figure {
+  position: relative;
+}
+
+.frame::before,
+.frame::after,
+.review-list figure::before,
+.review-list figure::after {
+  --line: linear-gradient(var(--color-gold), var(--color-gold));
+
+  content: "";
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  pointer-events: none;
+  background:
+    var(--line) 0 0 / 100% 2px no-repeat,
+    var(--line) 0 0 / 2px 100% no-repeat,
+    var(--line) 0.5rem 0.5rem / calc(100% - 0.5rem) 1px no-repeat,
+    var(--line) 0.5rem 0.5rem / 1px calc(100% - 0.5rem) no-repeat;
+}
+
+.frame::before {
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+.frame::after {
+  right: -0.5rem;
+  bottom: -0.5rem;
+  transform: rotate(180deg);
+}
+
+.review-list figure::before {
+  top: 0;
+  left: 0;
+}
+
+.review-list figure::after {
+  right: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+/* Double frame: gold outer line, dark mat, thin inner line around the picture. */
+.frame {
+  margin: 0;
+  padding: var(--space-1);
+  border: 1px solid var(--color-gold);
+  background: var(--color-bg);
+}
+
+.frame img {
+  outline: 1px solid rgb(212 175 55 / 40%);
+  outline-offset: -1px;
+}
+
+/* 7. Sections
    -------------------------------------------------------------------------- */
 main > .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
   gap: var(--space-5);
   align-items: center;
   width: 100%;
   padding-block: calc(var(--header-height) + var(--space-5)) var(--space-section);
   padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
-  background: var(--color-espresso);
-  color: var(--color-white);
-}
-
-.eyebrow {
-  margin-bottom: var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-olive);
-}
-
-.hero .eyebrow,
-.hours-band .eyebrow {
-  color: var(--color-sand);
+  overflow: hidden;
+  background-color: var(--color-bg);
+  background-image: var(--pattern-crosshatch);
 }
 
 .hero .accent {
   display: block;
-  font-style: italic;
-  color: var(--color-sand);
+  color: var(--color-gold);
 }
 
 .hero-lead {
   max-width: 30rem;
-  margin: var(--space-3) 0 var(--space-5);
+  margin: var(--space-3) 0 var(--space-4);
   font-size: var(--text-lg);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
-}
-
-.hero :focus-visible {
-  outline-color: var(--color-white);
+  gap: var(--space-2);
 }
 
 .hero-media {
-  margin: 0;
+  justify-self: center;
+  width: min(100%, 26rem);
+}
+
+/* Restrained sunburst behind the picture. */
+.hero-media::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -45%;
+  background: repeating-conic-gradient(from 0deg at 50% 55%, rgb(212 175 55 / 16%) 0 2deg, transparent 2deg 10deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 62%);
+  mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 62%);
 }
 
 .hero-media img {
@@ -474,6 +624,7 @@ main > .hero {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: 50% 70%;
+  background: var(--color-card);
 }
 
 @media (min-width: 56rem) {
@@ -482,12 +633,9 @@ main > .hero {
     gap: var(--space-6);
   }
 
-  /* The image sits at the bottom of the row and hangs 2rem into the next section. */
   .hero-media {
-    position: relative;
-    z-index: 1;
-    align-self: end;
-    margin-bottom: calc(-1 * (var(--space-section) + 2rem));
+    justify-self: end;
+    width: min(100%, 28rem);
   }
 
   .hero-media img {
@@ -503,15 +651,15 @@ main > .hero {
 
 .about-lead {
   max-width: 34rem;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .about-text p:not(.eyebrow, .about-lead) {
   max-width: 34rem;
-  margin-top: var(--space-3);
+  margin-top: var(--space-2);
   color: var(--color-muted);
 }
 
@@ -522,35 +670,60 @@ main > .hero {
 
 .about-facts > div {
   display: grid;
-  grid-template-columns: 5.5rem 1fr;
-  gap: var(--space-3);
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-2);
   align-items: baseline;
-  padding-block: var(--space-3);
+  padding-block: var(--space-2);
   border-bottom: 1px solid var(--color-rule);
 }
 
 .about-facts dt {
-  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-olive);
+  color: var(--color-gold);
+}
+
+.about-facts dt::before {
+  content: "";
+  flex: none;
+  width: 0.375rem;
+  height: 0.375rem;
+  background: currentcolor;
+  transform: rotate(45deg);
 }
 
 .about-facts dd {
   margin: 0;
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  line-height: 1.3;
+  font-size: var(--text-md);
+  line-height: 1.4;
+}
+
+@media (min-width: 48rem) {
+  .about {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-6);
+  }
+
+  /* A vertical gold line anchors the facts beside the story. */
+  .about-facts {
+    padding-left: var(--space-4);
+    border-top: 0;
+    border-left: 1px solid var(--color-gold);
+  }
 }
 
 main > .hours-band {
-  --hours-bg: #2b1c15;
-  --hours-text: #f5ebdd;
-  --hours-muted: #b8a99a;
-  --hours-rule: rgb(245 235 221 / 18%);
-  --hours-track: #49382f;
-  --hours-fill: var(--hours-text);
+  --hours-bg: var(--color-midnight);
+  --hours-text: var(--color-cream);
+  --hours-muted: var(--color-cream-dim);
+  --hours-rule: rgb(212 175 55 / 35%);
+  --hours-track: rgb(242 240 228 / 18%);
+  --hours-fill: var(--color-gold);
 
   display: grid;
   gap: var(--space-4);
@@ -562,21 +735,11 @@ main > .hours-band {
   color: var(--hours-text);
 }
 
-.hours-band .eyebrow {
-  margin-bottom: var(--space-2);
-  letter-spacing: 0.16em;
-  color: var(--hours-muted);
-}
-
-.hours-band h2 {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-}
-
 .hours-chart {
   --hours-day-width: 11rem;
-  --hours-time-size: 1.375rem;
+  --hours-time-size: 1.25rem;
   --hours-time-width: calc(var(--hours-time-size) * 8.8);
-  --hours-gap: var(--space-3);
+  --hours-gap: var(--space-2);
 }
 
 /* The band's padding is slimmer than other sections, so give anchor jumps some air. */
@@ -601,7 +764,7 @@ main > .hours-band {
 
 .hours-table th,
 .hours-table td {
-  padding: var(--space-3) 0;
+  padding: var(--space-2) 0;
   border-bottom: 1px solid var(--hours-rule);
   text-align: left;
   vertical-align: middle;
@@ -616,14 +779,17 @@ main > .hours-band {
 }
 
 .hours-table tbody th {
-  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
-  font-weight: 500;
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .hours-slot {
   display: grid;
   grid-template-areas: "time" "bar";
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
 .hours-time {
@@ -667,23 +833,13 @@ main > .hours-band {
 
 @media (hover: hover) {
   .hours-table:hover tbody tr:not(:hover) {
-    opacity: 0.55;
+    opacity: 0.7;
   }
 }
 
 @media (min-width: 48rem) {
-  .about {
-    grid-template-columns: 7fr 5fr;
-    gap: var(--space-6);
-  }
-
-  /* Offset the facts below the heading for an asymmetric rhythm. */
-  .about-facts {
-    margin-top: var(--space-6);
-  }
-
   .hours-chart {
-    --hours-time-size: clamp(1.5rem, 2vw, 2rem);
+    --hours-time-size: clamp(1.375rem, 2vw, 1.75rem);
   }
 
   .hours-chart.is-scaled .hours-axis {
@@ -731,11 +887,16 @@ main > .hours-band {
   }
 }
 
+.section-note {
+  margin-top: var(--space-2);
+  color: var(--color-muted);
+}
+
 .menu-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-top: var(--space-4);
+  gap: var(--space-1);
+  margin-top: var(--space-3);
 }
 
 .menu-filters[hidden] {
@@ -744,31 +905,34 @@ main > .hours-band {
 
 .filter-button {
   min-height: 2.75rem;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-1) var(--space-2);
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   background: transparent;
   color: var(--color-muted);
+  font-size: 0.8125rem;
   font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   cursor: pointer;
   transition: color var(--transition), border-color var(--transition);
 }
 
 .filter-button:hover {
   color: var(--color-text);
-  border-bottom-color: var(--color-sand);
+  border-bottom-color: var(--color-rule);
 }
 
 .filter-button[aria-pressed="true"] {
-  color: var(--color-text);
-  border-bottom-color: var(--color-olive);
+  color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
 }
 
 #menu-list {
   display: grid;
   column-gap: var(--space-6);
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
 }
 
 /* Name, dotted leader and price share one line; the description sits beneath. */
@@ -778,14 +942,17 @@ main > .hours-band {
   grid-template-areas:
     "name leader price"
     "desc desc desc";
-  column-gap: var(--space-3);
+  column-gap: var(--space-2);
   align-items: baseline;
-  padding-block: var(--space-3);
+  padding-block: var(--space-2);
   border-bottom: 1px solid var(--color-rule);
 }
 
 .menu-card h3 {
   grid-area: name;
+  font-size: var(--text-md);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transition: color var(--transition);
 }
 
@@ -794,7 +961,7 @@ main > .hours-band {
   grid-area: leader;
   align-self: end;
   margin-bottom: 0.3em;
-  border-bottom: 2px dotted rgb(43 29 20 / 35%);
+  border-bottom: 2px dotted rgb(212 175 55 / 45%);
   transition: border-color var(--transition);
 }
 
@@ -803,22 +970,22 @@ main > .hours-band {
   font-family: var(--font-heading);
   font-size: var(--text-lg);
   font-variant-numeric: tabular-nums;
-  color: var(--color-accent);
+  color: var(--color-gold);
 }
 
 .menu-card p:not(.price) {
   grid-area: desc;
   max-width: 30rem;
-  margin-top: var(--space-1);
+  margin-top: 0.25rem;
   color: var(--color-muted);
 }
 
 .menu-card:hover h3 {
-  color: var(--color-olive);
+  color: var(--color-gold-light);
 }
 
 .menu-card:hover::before {
-  border-color: var(--color-accent);
+  border-color: var(--color-gold);
 }
 
 @media (min-width: 56rem) {
@@ -827,56 +994,57 @@ main > .hours-band {
   }
 }
 
-.section-note {
-  margin-top: var(--space-2);
-  color: var(--color-muted);
-}
-
 .review-list {
   display: grid;
-  gap: var(--space-5) var(--space-6);
+  gap: var(--space-4);
   margin-top: var(--space-5);
 }
 
 .review-list figure {
   height: 100%;
   margin: 0;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-rule);
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-card);
+  transition: transform var(--transition);
+}
+
+@media (hover: hover) {
+  .review-list figure:hover {
+    transform: translateY(-0.25rem);
+  }
 }
 
 .review-list blockquote {
   margin: 0;
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-style: italic;
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.review-list blockquote::before {
+  content: "\201C";
+  content: "\201C" / "";
+  display: block;
+  margin-bottom: var(--space-1);
+  font-size: 3.5rem;
+  line-height: 0.6;
+  color: var(--color-gold);
 }
 
 .review-list figcaption {
   margin-top: var(--space-3);
-  font-size: var(--text-sm);
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
 
-/* The first review is set large; the rest sit quietly beneath it. */
+/* The first review is set large; the rest sit beneath it. */
 .review-list li:first-child blockquote {
   max-width: 44rem;
   font-size: var(--text-xl);
-  line-height: 1.25;
-}
-
-.review-list li:first-child blockquote::before {
-  content: "\201C";
-  content: "\201C" / "";
-  display: block;
-  margin-bottom: var(--space-2);
-  font-size: 4rem;
-  line-height: 0.6;
-  color: var(--color-accent);
+  line-height: 1.3;
 }
 
 @media (min-width: 48rem) {
@@ -886,6 +1054,10 @@ main > .hours-band {
 
   .review-list li:first-child {
     grid-column: 1 / -1;
+  }
+
+  .review-list figure {
+    padding: var(--space-5) var(--space-4);
   }
 }
 
@@ -898,23 +1070,34 @@ main > .hours-band {
 }
 
 .faq-item h3 {
-  padding-block: var(--space-2);
-  font-size: var(--text-lg);
+  padding-block: var(--space-1);
 }
 
 .faq-item p {
   max-width: 36rem;
-  padding-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
   color: var(--color-muted);
+}
+
+.faq-item p:not([hidden]) {
+  animation: faq-open var(--transition) ease;
+}
+
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
 }
 
 .faq-question {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: var(--space-2);
   width: 100%;
-  padding: var(--space-2) 0;
+  min-height: 2.75rem;
+  padding: var(--space-1) 0;
   border: 0;
   background: none;
   font: inherit;
@@ -924,7 +1107,7 @@ main > .hours-band {
 }
 
 .faq-question:hover {
-  color: var(--color-olive);
+  color: var(--color-gold-light);
 }
 
 .faq-question::after {
@@ -932,7 +1115,7 @@ main > .hours-band {
   flex-shrink: 0;
   font-size: var(--text-xl);
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-gold);
   transition: transform var(--transition);
 }
 
@@ -945,14 +1128,6 @@ main > .hours-band {
   gap: var(--space-4);
 }
 
-@media (min-width: 56rem) {
-  #faq {
-    grid-template-columns: 4fr 8fr;
-    gap: var(--space-6);
-    align-items: start;
-  }
-}
-
 #contact {
   display: grid;
   gap: var(--space-4);
@@ -960,16 +1135,16 @@ main > .hours-band {
 
 #contact-form {
   display: grid;
-  gap: var(--space-4);
+  gap: var(--space-3);
   max-width: 36rem;
 }
 
 .field label {
   display: block;
-  margin-bottom: var(--space-1);
-  font-size: var(--text-sm);
+  margin-bottom: 0.25rem;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-muted);
 }
@@ -977,9 +1152,9 @@ main > .hours-band {
 .field input,
 .field textarea {
   width: 100%;
-  padding: var(--space-2) 0;
+  padding: var(--space-1) 0;
   border: 0;
-  border-bottom: 1px solid var(--color-muted);
+  border-bottom: 1px solid var(--color-gold);
   border-radius: 0;
   background: transparent;
   font-size: 1.125rem;
@@ -993,8 +1168,8 @@ main > .hours-band {
 
 .field input:focus,
 .field textarea:focus {
-  border-bottom-color: var(--color-olive);
-  box-shadow: 0 1px 0 var(--color-olive);
+  border-bottom-color: var(--color-gold-light);
+  box-shadow: 0 1px 0 var(--color-gold-light);
 }
 
 .field [aria-invalid="true"] {
@@ -1004,14 +1179,14 @@ main > .hours-band {
 
 .field-error {
   min-height: 1.5em;
-  margin-top: var(--space-1);
+  margin-top: 0.25rem;
   font-size: var(--text-sm);
   color: var(--color-error);
 }
 
 .form-status {
   font-weight: 600;
-  color: var(--color-olive);
+  color: var(--color-gold-light);
 }
 
 #contact-form .button {
@@ -1019,6 +1194,7 @@ main > .hours-band {
 }
 
 @media (min-width: 56rem) {
+  #faq,
   #contact {
     grid-template-columns: 4fr 8fr;
     gap: var(--space-6);
@@ -1027,41 +1203,49 @@ main > .hours-band {
 }
 
 .site-footer {
+  position: relative;
   display: grid;
-  gap: var(--space-4);
-  padding: var(--space-6) max(var(--gutter), (100% - var(--container-max)) / 2) var(--space-5);
-  background: var(--color-espresso);
-  color: var(--color-sand);
+  gap: var(--space-3);
+  padding: var(--space-6) max(var(--gutter), (100% - var(--container-max)) / 2) var(--space-4);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* A band of gold diamonds along the top edge. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.75rem;
+  border-block: 1px solid var(--color-gold);
+  background: var(--pattern-lattice);
+  opacity: 0.6;
 }
 
 .site-footer a {
   display: inline-block;
-  padding-block: var(--space-1);
-  color: var(--color-ivory);
+  padding-block: 0.25rem;
+  color: var(--color-gold);
   text-underline-offset: 0.25em;
   transition: color var(--transition);
 }
 
 .site-footer a:hover {
-  color: var(--color-sand);
-}
-
-.site-footer :focus-visible {
-  outline-color: var(--color-white);
+  color: var(--color-gold-light);
 }
 
 .footer-brand {
   font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 1rem + 6vw, 6rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--color-ivory);
+  font-size: clamp(1.75rem, 1rem + 3.6vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
 }
 
 .footer-brand span {
-  font-style: italic;
-  color: var(--color-sand);
+  display: block;
+  color: var(--color-cream);
 }
 
 .site-footer address {
@@ -1069,16 +1253,11 @@ main > .hours-band {
   line-height: 1.8;
 }
 
-.social-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
-}
-
 .footer-legal {
-  padding-top: var(--space-4);
-  border-top: 1px solid rgb(246 240 228 / 20%);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-rule);
   font-size: var(--text-sm);
+  color: var(--color-muted);
 }
 
 @media (min-width: 48rem) {

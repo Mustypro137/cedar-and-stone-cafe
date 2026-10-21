@@ -143,6 +143,29 @@ function initFaq() {
   });
 }
 
+function initReveal() {
+  if (!('IntersectionObserver' in window)
+    || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Classes are added here, so without JavaScript everything simply stays visible.
+  const targets = document.querySelectorAll(
+    'main > section:not(.hero) h2, .about-lead, .about-facts, .menu-filters, #menu-list, .review-list li, .faq-list, #contact-form',
+  );
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -10% 0px' });
+
+  targets.forEach((target) => {
+    target.classList.add('reveal');
+    observer.observe(target);
+  });
+}
+
 const FIELD_RULES = {
   name: (value) => (value ? '' : 'Please enter your name.'),
   email: (value) => {
@@ -200,4 +223,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initMenuFilter();
   initFaq();
   initContactForm();
+  initReveal();
 });

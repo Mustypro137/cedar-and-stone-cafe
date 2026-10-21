@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cedar &amp; Stone Café</title>
   <meta name="description" content="Cedar &amp; Stone Café is a fictional local café website built as a front-end portfolio project.">
-  <meta name="theme-color" content="#2b1d14">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232b1d14'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' text-anchor='middle' fill='%23f6f0e4'%3EC%3C/text%3E%3C/svg%3E">
-  <link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/fraunces-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='0' fill='%230a0a0a'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' text-anchor='middle' fill='%23d4af37'%3EC%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/josefin-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -36,18 +36,18 @@
         <h1 id="hero-title">Cedar &amp; Stone <span class="accent">Café</span></h1>
         <p class="hero-lead">Slow-roasted coffee, fresh bakes and a warm table in the heart of the neighbourhood.</p>
         <div class="hero-actions">
-          <a class="button button-light" href="#menu">See the menu</a>
-          <a class="button button-outline" href="#hours">Opening hours</a>
+          <a class="button" href="#menu">Explore Our Menu</a>
+          <a class="button button-outline" href="#hours">Plan your visit</a>
         </div>
       </div>
-      <figure class="hero-media">
-        <img src="images/hero.svg" alt="Illustration of a steaming cup of coffee on a saucer in front of an arched window." width="800" height="1000" fetchpriority="high">
+      <figure class="hero-media frame">
+        <img src="images/hero.svg" alt="Illustration of a steaming cup of coffee on a gold saucer beneath stepped Art Deco arches and a fan of golden rays." width="800" height="1000" fetchpriority="high">
       </figure>
     </section>
 
     <section id="about" class="about" aria-labelledby="about-title">
       <div class="about-text">
-        <p class="eyebrow">Our story</p>
+        <p class="eyebrow"><span class="numeral" aria-hidden="true">I</span>Our story</p>
         <h2 id="about-title">About us</h2>
         <p class="about-lead">Cedar &amp; Stone is a small, family-run café. We roast our beans in small batches, bake every morning and keep the menu short so everything is made with care.</p>
         <p>Pull up a chair, bring a book or a friend, and stay as long as you like.</p>
@@ -63,7 +63,7 @@
 
     <section id="hours" class="hours-band" aria-labelledby="hours-title">
       <div>
-        <p class="eyebrow">Visit us</p>
+        <p class="eyebrow"><span class="numeral" aria-hidden="true">II</span>Visit us</p>
         <h2 id="hours-title">Opening hours</h2>
       </div>
 
@@ -99,7 +99,7 @@
     </section>
 
     <section id="menu" aria-labelledby="menu-title">
-      <p class="eyebrow">Coffee, bakes &amp; lunch</p>
+      <p class="eyebrow"><span class="numeral" aria-hidden="true">III</span>Coffee, bakes &amp; lunch</p>
       <h2 id="menu-title">Menu</h2>
       <p class="section-note">Sample menu and prices for demonstration purposes.</p>
 
@@ -161,7 +161,7 @@
     </section>
 
     <section id="reviews" aria-labelledby="reviews-title">
-      <p class="eyebrow">Sample reviews</p>
+      <p class="eyebrow"><span class="numeral" aria-hidden="true">IV</span>Sample reviews</p>
       <h2 id="reviews-title">What people say</h2>
       <p class="section-note">These reviews are fictional sample content.</p>
 
@@ -189,7 +189,7 @@
 
     <section id="faq" aria-labelledby="faq-title">
       <div class="faq-intro">
-        <p class="eyebrow">Good to know</p>
+        <p class="eyebrow"><span class="numeral" aria-hidden="true">V</span>Good to know</p>
         <h2 id="faq-title">Frequently asked questions</h2>
       </div>
 
@@ -213,9 +213,9 @@
       </div>
     </section>
 
-    <section id="contact" aria-labelledby="contact-title">
+    <section id="contact" class="band" aria-labelledby="contact-title">
       <div class="contact-intro">
-        <p class="eyebrow">Get in touch</p>
+        <p class="eyebrow"><span class="numeral" aria-hidden="true">VI</span>Get in touch</p>
         <h2 id="contact-title">Contact</h2>
         <p class="section-note">This is a demo form. It does not send messages.</p>
       </div>
@@ -250,10 +250,6 @@
       <a href="tel:+10000000000">+1 000 000 0000</a><br>
       <a href="mailto:hello@example.com">hello@example.com</a>
     </address>
-    <ul class="social-links" role="list" aria-label="Social media">
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Facebook</a></li>
-    </ul>
     <p class="footer-legal">&copy; 2026 Cedar &amp; Stone Café. Sample content for a portfolio project.</p>
   </footer>
 </body>

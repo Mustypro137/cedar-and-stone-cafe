@@ -766,31 +766,64 @@ main > .hours-band {
 
 #menu-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: var(--space-4);
+  column-gap: var(--space-6);
   margin-top: var(--space-4);
 }
 
+/* Name, dotted leader and price share one line; the description sits beneath. */
 .menu-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-4);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition), transform var(--transition);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "name leader price"
+    "desc desc desc";
+  column-gap: var(--space-3);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-rule);
 }
 
-.menu-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.menu-card h3 {
+  grid-area: name;
+  transition: color var(--transition);
+}
+
+.menu-card::before {
+  content: "";
+  grid-area: leader;
+  align-self: end;
+  margin-bottom: 0.3em;
+  border-bottom: 2px dotted rgb(43 29 20 / 35%);
+  transition: border-color var(--transition);
 }
 
 .menu-card .price {
-  margin-top: auto;
-  font-weight: 700;
+  grid-area: price;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-variant-numeric: tabular-nums;
   color: var(--color-accent);
+}
+
+.menu-card p:not(.price) {
+  grid-area: desc;
+  max-width: 30rem;
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+}
+
+.menu-card:hover h3 {
+  color: var(--color-olive);
+}
+
+.menu-card:hover::before {
+  border-color: var(--color-accent);
+}
+
+@media (min-width: 56rem) {
+  #menu-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .section-note {

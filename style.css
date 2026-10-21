@@ -91,7 +91,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height);
+  /* Sections carry their own top padding, so only half the header is needed. */
+  scroll-padding-top: calc(var(--header-height) / 2);
 }
 
 img,
@@ -180,6 +181,7 @@ a {
 
 .skip-link {
   position: absolute;
+  z-index: 20;
   top: var(--space-2);
   left: var(--space-2);
   padding: var(--space-2) var(--space-3);
@@ -258,8 +260,12 @@ main > section {
 
 /* Header and navigation */
 .site-header {
-  position: sticky;
-  top: 0;
+  --header-fg: var(--color-text);
+  --header-hover: var(--color-olive);
+  --header-line: rgb(43 29 20 / 12%);
+
+  position: fixed;
+  inset: 0 0 auto;
   z-index: 10;
   display: flex;
   flex-wrap: wrap;
@@ -269,7 +275,32 @@ main > section {
   min-height: var(--header-height);
   padding: var(--space-2) max(var(--gutter), (100% - var(--container-max)) / 2);
   background: var(--color-surface);
-  border-bottom: 1px solid rgb(43 29 20 / 12%);
+  border-bottom: 1px solid var(--header-line);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+/* No fades until initHeader() has set the initial state. */
+.site-header:not(.is-ready),
+.site-header:not(.is-ready) * {
+  transition: none !important;
+}
+
+/* Over the hero (JS adds .is-over-hero) the header is transparent with light text. */
+.site-header.is-over-hero:not(.is-menu-open) {
+  --header-fg: var(--color-ivory);
+  --header-hover: var(--color-sand);
+  --header-line: transparent;
+
+  background: transparent;
+}
+
+.site-header.is-over-hero:not(.is-menu-open) .button {
+  background: var(--color-ivory);
+  color: var(--color-espresso);
+}
+
+.site-header.is-over-hero:not(.is-menu-open) .button:hover {
+  background: var(--color-sand);
 }
 
 .brand {
@@ -277,13 +308,13 @@ main > section {
   font-size: var(--text-lg);
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--color-text);
+  color: var(--header-fg);
   text-decoration: none;
   transition: color var(--transition);
 }
 
 .brand:hover {
-  color: var(--color-olive);
+  color: var(--header-hover);
 }
 
 .site-nav ul {
@@ -297,7 +328,7 @@ main > section {
   position: relative;
   display: inline-block;
   padding: var(--space-2) 0;
-  color: var(--color-text);
+  color: var(--header-fg);
   font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -317,7 +348,7 @@ main > section {
 }
 
 .site-nav a:not(.button):hover {
-  color: var(--color-olive);
+  color: var(--header-hover);
 }
 
 .site-nav a:not(.button):hover::after,
@@ -328,15 +359,15 @@ main > section {
 .nav-toggle {
   min-height: 2.75rem;
   padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--color-espresso);
+  border: 1px solid var(--header-fg);
   border-radius: var(--radius-sm);
   background: transparent;
-  color: var(--color-espresso);
+  color: var(--header-fg);
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .nav-toggle[aria-expanded="true"] {
@@ -391,11 +422,14 @@ main > section {
 /* 6. Sections
    -------------------------------------------------------------------------- */
 main > .hero {
+  display: grid;
+  gap: var(--space-5);
+  align-items: center;
   width: 100%;
+  padding-block: calc(var(--header-height) + var(--space-5)) var(--space-section);
   padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
   background: var(--color-espresso);
   color: var(--color-white);
-  text-align: center;
 }
 
 .hero .eyebrow {
@@ -406,21 +440,56 @@ main > .hero {
   color: var(--color-sand);
 }
 
+.hero .accent {
+  display: block;
+  font-style: italic;
+  color: var(--color-sand);
+}
+
 .hero-lead {
-  max-width: 38rem;
-  margin: var(--space-3) auto var(--space-5);
+  max-width: 30rem;
+  margin: var(--space-3) 0 var(--space-5);
   font-size: var(--text-lg);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: var(--space-3);
 }
 
 .hero :focus-visible {
   outline-color: var(--color-white);
+}
+
+.hero-media {
+  margin: 0;
+}
+
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 50% 70%;
+}
+
+@media (min-width: 56rem) {
+  main > .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: var(--space-6);
+  }
+
+  /* The image sits at the bottom of the row and hangs 2rem into the next section. */
+  .hero-media {
+    position: relative;
+    z-index: 1;
+    align-self: end;
+    margin-bottom: calc(-1 * (var(--space-section) + 2rem));
+  }
+
+  .hero-media img {
+    aspect-ratio: 4 / 5;
+  }
 }
 
 .about {

@@ -5,12 +5,15 @@ function initNav() {
   const nav = document.getElementById('site-nav');
   if (!toggle || !nav) return;
 
+  const header = toggle.closest('.site-header');
+
   document.documentElement.classList.add('js');
   toggle.hidden = false;
 
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
     nav.classList.toggle('is-open', open);
+    header.classList.toggle('is-menu-open', open);
   };
 
   toggle.addEventListener('click', () => {
@@ -27,6 +30,20 @@ function initNav() {
       toggle.focus();
     }
   });
+}
+
+function initHeader() {
+  const header = document.querySelector('.site-header');
+  const hero = document.getElementById('top');
+  if (!header || !hero || !('IntersectionObserver' in window)) return;
+
+  // Transparent only while the hero is still under the header; solid otherwise.
+  const observer = new IntersectionObserver(([entry]) => {
+    header.classList.toggle('is-over-hero', entry.isIntersecting);
+    // Fades are enabled only after the initial state is set, so nothing animates on load.
+    requestAnimationFrame(() => header.classList.add('is-ready'));
+  }, { rootMargin: `-${header.offsetHeight}px 0px 0px 0px` });
+  observer.observe(hero);
 }
 
 function initMenuFilter() {
@@ -134,6 +151,7 @@ function initContactForm() {
 document.addEventListener('DOMContentLoaded', () => {
   // Feature initialisers are added here, one per milestone.
   initNav();
+  initHeader();
   initMenuFilter();
   initFaq();
   initContactForm();

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <rect width="800" height="1000" fill="#ebe2cf"/>
+  <path d="M160 780V380a240 240 0 0 1 480 0v400z" fill="#6b7048"/>
+  <path d="M400 140v640M160 440h480" stroke="#f6f0e4" stroke-width="8" opacity=".3" fill="none"/>
+  <circle cx="500" cy="300" r="46" fill="#ebe2cf" opacity=".9"/>
+  <rect y="780" width="800" height="220" fill="#5a3d2b"/>
+  <ellipse cx="400" cy="806" rx="200" ry="28" fill="#000" opacity=".25"/>
+  <ellipse cx="400" cy="796" rx="200" ry="28" fill="#f6f0e4"/>
+  <path d="M508 650h28a42 42 0 0 1 0 84h-30" fill="none" stroke="#fbf8f1" stroke-width="16" stroke-linecap="round"/>
+  <path d="M290 620h220v50a110 110 0 0 1-220 0z" fill="#fbf8f1"/>
+  <ellipse cx="400" cy="620" rx="110" ry="16" fill="#2b1d14"/>
+  <ellipse cx="400" cy="620" rx="92" ry="10" fill="#9a4a31"/>
+  <g fill="none" stroke="#f6f0e4" stroke-width="8" stroke-linecap="round" opacity=".8">
+    <path d="M365 575c-22-30 22-50 0-92"/>
+    <path d="M400 565c-22-30 22-50 0-102"/>
+    <path d="M435 575c-22-30 22-50 0-92"/>
+  </g>
+</svg>

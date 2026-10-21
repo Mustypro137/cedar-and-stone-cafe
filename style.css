@@ -722,7 +722,7 @@ main > .hero {
   line-height: 1.4;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 56rem) {
   .about {
     grid-template-columns: 7fr 5fr;
     gap: var(--space-6);

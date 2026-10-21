@@ -1272,6 +1272,13 @@ main > .hours-band {
   line-height: 1.8;
 }
 
+.project-links a {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 .footer-legal {
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-rule);

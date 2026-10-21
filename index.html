@@ -63,6 +63,14 @@
       <h2 id="menu-title">Menu</h2>
       <p>Sample menu and prices for demonstration purposes.</p>
 
+      <div class="menu-filters" role="group" aria-label="Filter menu by category" hidden>
+        <button type="button" class="filter-button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-button" data-filter="coffee" aria-pressed="false">Coffee</button>
+        <button type="button" class="filter-button" data-filter="bakery" aria-pressed="false">Bakery</button>
+        <button type="button" class="filter-button" data-filter="lunch" aria-pressed="false">Lunch</button>
+      </div>
+      <p id="menu-status" class="visually-hidden" role="status"></p>
+
       <ul id="menu-list" role="list">
         <li class="menu-card" data-category="coffee">
           <h3>Flat White</h3>

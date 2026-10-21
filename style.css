@@ -374,3 +374,63 @@ main > .hero {
     gap: var(--space-6);
   }
 }
+
+.menu-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+}
+
+.menu-filters[hidden] {
+  display: none;
+}
+
+.filter-button {
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--color-cedar);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-cedar);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.filter-button:hover {
+  background: var(--color-sand);
+}
+
+.filter-button[aria-pressed="true"] {
+  background: var(--color-cedar);
+  color: var(--color-white);
+}
+
+#menu-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.menu-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.menu-card .price {
+  margin-top: auto;
+  font-weight: 700;
+  color: var(--color-accent);
+}

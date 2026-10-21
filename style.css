@@ -549,29 +549,48 @@ main > .hero {
 }
 
 main > .hours-band {
+  --hours-bg: #2b1c15;
+  --hours-text: #f5ebdd;
+  --hours-muted: #b8a99a;
+  --hours-rule: rgb(245 235 221 / 18%);
+  --hours-track: #49382f;
+  --hours-fill: var(--hours-text);
+
   display: grid;
   gap: var(--space-4);
   align-items: center;
   width: 100%;
   padding-block: var(--space-5);
   padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
-  background: var(--color-espresso);
-  color: var(--color-ivory);
+  background: var(--hours-bg);
+  color: var(--hours-text);
 }
 
 .hours-band .eyebrow {
   margin-bottom: var(--space-2);
+  letter-spacing: 0.16em;
+  color: var(--hours-muted);
+}
+
+.hours-band h2 {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
 }
 
 .hours-chart {
-  --hours-day-width: 9.5rem;
-  --hours-time-width: 12rem;
+  --hours-day-width: 11rem;
+  --hours-time-size: 1.375rem;
+  --hours-time-width: calc(var(--hours-time-size) * 8.8);
   --hours-gap: var(--space-3);
 }
 
-/* The chart spans 7 am to 6 pm, which is 11 hours. */
-.hours-axis {
+/* The timeline is drawn by initHoursChart(); without JS only the table shows. */
+.hours-axis,
+.hours-bar {
   display: none;
+}
+
+.hours-chart.is-scaled .hours-bar {
+  display: block;
 }
 
 .hours-table {
@@ -582,51 +601,73 @@ main > .hours-band {
 .hours-table th,
 .hours-table td {
   padding: var(--space-3) 0;
-  border-bottom: 1px solid rgb(246 240 228 / 20%);
+  border-bottom: 1px solid var(--hours-rule);
   text-align: left;
   vertical-align: middle;
 }
 
 .hours-table tbody tr:first-child > * {
-  border-top: 1px solid rgb(246 240 228 / 20%);
+  border-top: 1px solid var(--hours-rule);
+}
+
+.hours-table tbody tr {
+  transition: opacity var(--transition);
 }
 
 .hours-table tbody th {
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
   font-weight: 500;
-  color: var(--color-sand);
 }
 
 .hours-slot {
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  grid-template-areas: "time" "bar";
   gap: var(--space-2);
 }
 
 .hours-time {
+  grid-area: time;
   font-family: var(--font-heading);
-  font-size: var(--text-lg);
+  font-size: var(--hours-time-size);
   font-variant-numeric: tabular-nums;
   text-align: right;
+  white-space: nowrap;
 }
 
 .hours-bar {
   position: relative;
-  height: 0.375rem;
-  background: rgb(246 240 228 / 14%);
+  grid-area: bar;
+  height: 0.25rem;
+  background: var(--hours-track);
 }
 
 .hours-bar::after {
   content: "";
   position: absolute;
   inset-block: 0;
-  left: calc((var(--from) - 7) / 11 * 100%);
-  width: calc((var(--to) - var(--from)) / 11 * 100%);
-  background: var(--color-sand);
-  transition: background var(--transition);
+  left: var(--left, 0%);
+  width: var(--width, 0%);
+  background: var(--hours-fill);
+  transform-origin: left;
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.hours-table tbody tr:hover .hours-bar::after {
-  background: var(--color-white);
+.hours-chart.is-scaled:not(.is-visible) .hours-bar::after {
+  transform: scaleX(0);
+}
+
+.hours-table tbody tr:nth-child(2) .hours-bar::after {
+  transition-delay: 120ms;
+}
+
+.hours-table tbody tr:nth-child(3) .hours-bar::after {
+  transition-delay: 240ms;
+}
+
+@media (hover: hover) {
+  .hours-table:hover tbody tr:not(:hover) {
+    opacity: 0.55;
+  }
 }
 
 @media (min-width: 48rem) {
@@ -640,36 +681,29 @@ main > .hours-band {
     margin-top: var(--space-6);
   }
 
-  main > .hours-band {
-    grid-template-columns: 4fr 8fr;
-    gap: var(--space-6);
+  .hours-chart {
+    --hours-time-size: clamp(1.5rem, 2vw, 2rem);
   }
 
-  .hours-axis {
+  .hours-chart.is-scaled .hours-axis {
     position: relative;
     display: block;
-    height: 1.25rem;
+    height: 1.5rem;
     margin-left: var(--hours-day-width);
     margin-right: calc(var(--hours-time-width) + var(--hours-gap));
-    font-size: 0.8125rem;
-    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-sand);
+    color: var(--hours-muted);
   }
 
   .hours-axis span {
     position: absolute;
-    left: calc(var(--at) / 11 * 100%);
-    transform: translateX(-50%);
+    left: var(--left, 0%);
+    /* Shifting by its own position keeps the first and last labels inside the track. */
+    transform: translateX(calc(var(--left, 0%) * -1));
     white-space: nowrap;
-  }
-
-  .hours-axis span:first-child {
-    transform: none;
-  }
-
-  .hours-axis span:last-child {
-    transform: translateX(-100%);
   }
 
   .hours-table {
@@ -681,17 +715,18 @@ main > .hours-band {
   }
 
   .hours-slot {
-    flex-direction: row;
+    grid-template-areas: "bar time";
+    grid-template-columns: minmax(0, 1fr) var(--hours-time-width);
     align-items: center;
-    gap: var(--hours-gap);
+    column-gap: var(--hours-gap);
   }
+}
 
-  .hours-bar {
-    flex: 1;
-  }
-
-  .hours-time {
-    flex: 0 0 var(--hours-time-width);
+/* Two columns only once the timeline has room to stay readable. */
+@media (min-width: 64rem) {
+  main > .hours-band {
+    grid-template-columns: 4fr 8fr;
+    gap: var(--space-6);
   }
 }
 

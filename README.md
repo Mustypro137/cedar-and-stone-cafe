@@ -12,7 +12,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 - Responsive navigation
 - Hero section with a clear call to action
-- About section and opening hours
+- About section and opening hours, with a timeline drawn to scale from the listed times
 - Menu cards with working category filters
 - Customer reviews (clearly marked as fictional)
 - Interactive FAQ accordion

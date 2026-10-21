@@ -46,6 +46,50 @@ function initHeader() {
   observer.observe(hero);
 }
 
+function initHoursChart() {
+  const chart = document.querySelector('.hours-chart');
+  if (!chart) return;
+
+  const toHours = (clock) => {
+    const [hours, minutes] = clock.split(':').map(Number);
+    return hours + minutes / 60;
+  };
+
+  // Every mark and bar is placed on one shared scale, read from the markup.
+  const start = toHours(chart.dataset.start);
+  const span = toHours(chart.dataset.end) - start;
+  const percent = (hours) => Math.min(100, Math.max(0, ((hours - start) / span) * 100));
+
+  chart.querySelectorAll('.hours-axis [data-time]').forEach((mark) => {
+    mark.style.setProperty('--left', `${percent(toHours(mark.dataset.time))}%`);
+  });
+
+  chart.querySelectorAll('tbody tr').forEach((row) => {
+    const bar = row.querySelector('.hours-bar');
+    const times = row.querySelectorAll('time');
+    if (!bar || times.length < 2) return;
+
+    const left = percent(toHours(times[0].dateTime));
+    bar.style.setProperty('--left', `${left}%`);
+    bar.style.setProperty('--width', `${percent(toHours(times[1].dateTime)) - left}%`);
+  });
+
+  chart.classList.add('is-scaled');
+
+  if (!('IntersectionObserver' in window)) {
+    chart.classList.add('is-visible');
+    return;
+  }
+
+  // Draw the bars in once, when the chart first scrolls into view.
+  const observer = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+    chart.classList.add('is-visible');
+    observer.disconnect();
+  }, { threshold: 0.4 });
+  observer.observe(chart);
+}
+
 function initMenuFilter() {
   const filters = document.querySelector('.menu-filters');
   const cards = document.querySelectorAll('.menu-card');
@@ -152,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Feature initialisers are added here, one per milestone.
   initNav();
   initHeader();
+  initHoursChart();
   initMenuFilter();
   initFaq();
   initContactForm();

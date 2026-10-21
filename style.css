@@ -193,6 +193,25 @@ main > section {
   background: var(--color-cedar-dark);
 }
 
+.button-light {
+  background: var(--color-cream);
+  color: var(--color-cedar-dark);
+}
+
+.button-light:hover {
+  background: var(--color-sand);
+}
+
+.button-outline {
+  border: 2px solid currentcolor;
+  background: transparent;
+  color: var(--color-white);
+}
+
+.button-outline:hover {
+  background: rgb(255 255 255 / 12%);
+}
+
 /* Header and navigation */
 .site-header {
   position: sticky;
@@ -270,13 +289,35 @@ main > section {
 
 /* 6. Sections
    -------------------------------------------------------------------------- */
-.hero {
-  max-width: 45rem;
+main > .hero {
+  width: 100%;
+  padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
+  background: linear-gradient(135deg, var(--color-cedar-dark), var(--color-cedar));
+  color: var(--color-white);
   text-align: center;
 }
 
-.hero p {
-  margin-block: var(--space-3) var(--space-4);
+.hero .eyebrow {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-sand);
+}
+
+.hero-lead {
+  max-width: 38rem;
+  margin: var(--space-3) auto var(--space-5);
   font-size: var(--text-lg);
-  color: var(--color-ink-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.hero :focus-visible {
+  outline-color: var(--color-white);
 }

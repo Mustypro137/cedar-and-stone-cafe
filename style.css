@@ -59,7 +59,7 @@
   --space-4: 1.5rem;
   --space-5: 2.5rem;
   --space-6: 4rem;
-  --space-section: clamp(3rem, 2rem + 5vw, 6rem);
+  --space-section: clamp(3rem, 2rem + 3.5vw, 4.5rem);
 
   /* Shape and elevation */
   --radius-sm: 0.125rem;
@@ -411,23 +411,26 @@ main > .hero {
 }
 
 .filter-button {
-  padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--color-olive);
-  border-radius: 999px;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
   background: transparent;
-  color: var(--color-olive);
+  color: var(--color-muted);
   font-weight: 600;
   cursor: pointer;
-  transition: background var(--transition), color var(--transition);
+  transition: color var(--transition), border-color var(--transition);
 }
 
 .filter-button:hover {
-  background: var(--color-sand);
+  color: var(--color-text);
+  border-bottom-color: var(--color-sand);
 }
 
 .filter-button[aria-pressed="true"] {
-  background: var(--color-olive);
-  color: var(--color-white);
+  color: var(--color-text);
+  border-bottom-color: var(--color-olive);
 }
 
 #menu-list {
@@ -461,7 +464,6 @@ main > .hero {
 
 .section-note {
   margin-top: var(--space-2);
-  font-size: var(--text-sm);
   color: var(--color-muted);
 }
 

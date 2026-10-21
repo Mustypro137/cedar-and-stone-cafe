@@ -27,7 +27,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - Text and control colours checked against WCAG AA contrast (4.5:1 for body text).
 - Respects `prefers-reduced-motion`.
 - Works without JavaScript: all content stays visible and only the enhancements are skipped.
-- No images, web fonts or dependencies; the script is loaded with `defer`.
+- No images or dependencies. One self-hosted variable web font (Fraunces, SIL OFL) with `font-display: swap`; the script is loaded with `defer`.
 
 ## Technologies
 
@@ -43,6 +43,7 @@ Open `index.html` in a browser, or use the VS Code Live Server extension.
 index.html
 style.css
 script.js
+fonts/
 README.md
 LICENSE
 ```

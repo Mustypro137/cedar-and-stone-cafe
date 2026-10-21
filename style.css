@@ -28,7 +28,6 @@
   --color-sand: #ebe2cf;
   --color-espresso: #2b1d14;
   --color-olive: #4a5030;
-  --color-olive-dark: #363b22;
   --color-clay: #9a4a31;
   --color-muted: #5e5145;
   --color-error: #a12a12;
@@ -62,11 +61,8 @@
   --space-6: 4rem;
   --space-section: clamp(3rem, 2rem + 3.5vw, 4.5rem);
 
-  /* Shape and elevation */
+  /* Shape */
   --radius-sm: 0.125rem;
-  --radius-md: 0.25rem;
-  --shadow-sm: 0 1px 2px rgb(43 29 20 / 10%);
-  --shadow-md: 0 8px 24px rgb(43 29 20 / 14%);
 
   /* Layout */
   --container-max: 70rem;
@@ -581,6 +577,11 @@ main > .hours-band {
   --hours-time-size: 1.375rem;
   --hours-time-width: calc(var(--hours-time-size) * 8.8);
   --hours-gap: var(--space-3);
+}
+
+/* The band's padding is slimmer than other sections, so give anchor jumps some air. */
+.hours-band {
+  scroll-margin-top: 1.5rem;
 }
 
 /* The timeline is drawn by initHoursChart(); without JS only the table shows. */

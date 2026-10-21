@@ -66,17 +66,35 @@
         <h2 id="hours-title">Opening hours</h2>
       </div>
 
-      <table class="hours-table">
-        <caption class="visually-hidden">Opening hours</caption>
-        <thead class="visually-hidden">
-          <tr><th scope="col">Day</th><th scope="col">Hours</th></tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Monday to Friday</th><td>7:30 am – 5:00 pm</td></tr>
-          <tr><th scope="row">Saturday</th><td>8:00 am – 6:00 pm</td></tr>
-          <tr><th scope="row">Sunday</th><td>9:00 am – 3:00 pm</td></tr>
-        </tbody>
-      </table>
+      <div class="hours-chart">
+        <div class="hours-axis" aria-hidden="true">
+          <span style="--at: 0">7 am</span>
+          <span style="--at: 5">12 pm</span>
+          <span style="--at: 11">6 pm</span>
+        </div>
+
+        <table class="hours-table">
+          <caption class="visually-hidden">Opening hours</caption>
+          <colgroup><col class="hours-col-day"><col></colgroup>
+          <thead class="visually-hidden">
+            <tr><th scope="col">Day</th><th scope="col">Hours</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Monday to Friday</th>
+              <td><div class="hours-slot"><span class="hours-bar" style="--from: 7.5; --to: 17" aria-hidden="true"></span><span class="hours-time">7:30 am – 5:00 pm</span></div></td>
+            </tr>
+            <tr>
+              <th scope="row">Saturday</th>
+              <td><div class="hours-slot"><span class="hours-bar" style="--from: 8; --to: 18" aria-hidden="true"></span><span class="hours-time">8:00 am – 6:00 pm</span></div></td>
+            </tr>
+            <tr>
+              <th scope="row">Sunday</th>
+              <td><div class="hours-slot"><span class="hours-bar" style="--from: 9; --to: 15" aria-hidden="true"></span><span class="hours-time">9:00 am – 3:00 pm</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section id="menu" aria-labelledby="menu-title">

@@ -82,9 +82,59 @@ function initFaq() {
   });
 }
 
+const FIELD_RULES = {
+  name: (value) => (value ? '' : 'Please enter your name.'),
+  email: (value) => {
+    if (!value) return 'Please enter your email address.';
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'Please enter a valid email address.';
+  },
+  message: (value) => {
+    if (!value) return 'Please enter a message.';
+    return value.length >= 10 ? '' : 'Your message should be at least 10 characters.';
+  },
+};
+
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  if (!form) return;
+
+  const validateField = (input) => {
+    const error = FIELD_RULES[input.name](input.value.trim());
+    input.setAttribute('aria-invalid', String(Boolean(error)));
+    document.getElementById(`${input.id}-error`).textContent = error;
+    return !error;
+  };
+
+  const inputs = [...form.querySelectorAll('input, textarea')];
+
+  inputs.forEach((input) => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true') validateField(input);
+    });
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    status.textContent = '';
+
+    const invalid = inputs.filter((input) => !validateField(input));
+    if (invalid.length) {
+      invalid[0].focus();
+      return;
+    }
+
+    // Demo only: nothing is sent anywhere.
+    form.reset();
+    status.textContent = 'Thanks! This is a demo form, so your message was not sent.';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Feature initialisers are added here, one per milestone.
   initNav();
   initMenuFilter();
   initFaq();
+  initContactForm();
 });

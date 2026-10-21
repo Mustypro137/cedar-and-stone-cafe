@@ -9,9 +9,181 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Cedar &amp; Stone Café</a>
+    <nav aria-label="Main">
+      <ul role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main id="main">
-    <h1>Cedar &amp; Stone Café</h1>
-    <p>Milestone 1 skeleton. Content arrives in Milestone 2.</p>
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Cedar &amp; Stone Café</h1>
+      <p>Slow-roasted coffee, fresh bakes and a warm table in the heart of the neighbourhood.</p>
+      <a class="button" href="#menu">See the menu</a>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About us</h2>
+      <p>Cedar &amp; Stone is a small, family-run café. We roast our beans in small batches, bake every morning and keep the menu short so everything is made with care.</p>
+      <p>Pull up a chair, bring a book or a friend, and stay as long as you like.</p>
+
+      <h3>Opening hours</h3>
+      <table>
+        <caption class="visually-hidden">Opening hours</caption>
+        <thead>
+          <tr><th scope="col">Day</th><th scope="col">Hours</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Monday to Friday</th><td>7:30 am – 5:00 pm</td></tr>
+          <tr><th scope="row">Saturday</th><td>8:00 am – 6:00 pm</td></tr>
+          <tr><th scope="row">Sunday</th><td>9:00 am – 3:00 pm</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="menu" aria-labelledby="menu-title">
+      <h2 id="menu-title">Menu</h2>
+      <p>Sample menu and prices for demonstration purposes.</p>
+
+      <ul id="menu-list" role="list">
+        <li class="menu-card" data-category="coffee">
+          <h3>Flat White</h3>
+          <p>Double espresso with silky steamed milk.</p>
+          <p class="price">$3.80</p>
+        </li>
+        <li class="menu-card" data-category="coffee">
+          <h3>Cedar Latte</h3>
+          <p>House blend, steamed milk and a touch of maple.</p>
+          <p class="price">$4.20</p>
+        </li>
+        <li class="menu-card" data-category="coffee">
+          <h3>Cold Brew</h3>
+          <p>Steeped for 18 hours and served over ice.</p>
+          <p class="price">$4.00</p>
+        </li>
+        <li class="menu-card" data-category="bakery">
+          <h3>Butter Croissant</h3>
+          <p>Flaky, golden and baked fresh each morning.</p>
+          <p class="price">$3.50</p>
+        </li>
+        <li class="menu-card" data-category="bakery">
+          <h3>Cardamom Bun</h3>
+          <p>Soft, spiced and finished with pearl sugar.</p>
+          <p class="price">$3.90</p>
+        </li>
+        <li class="menu-card" data-category="bakery">
+          <h3>Lemon Polenta Cake</h3>
+          <p>Moist, zesty and gluten free.</p>
+          <p class="price">$4.50</p>
+        </li>
+        <li class="menu-card" data-category="lunch">
+          <h3>Roasted Veg Sandwich</h3>
+          <p>Sourdough, roasted vegetables, hummus and rocket.</p>
+          <p class="price">$8.50</p>
+        </li>
+        <li class="menu-card" data-category="lunch">
+          <h3>Soup of the Day</h3>
+          <p>Made in-house and served with warm bread.</p>
+          <p class="price">$7.00</p>
+        </li>
+        <li class="menu-card" data-category="lunch">
+          <h3>Stone Bowl</h3>
+          <p>Grains, greens, soft egg and tahini dressing.</p>
+          <p class="price">$10.50</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="reviews" aria-labelledby="reviews-title">
+      <h2 id="reviews-title">What people say</h2>
+      <p>These reviews are fictional sample content.</p>
+
+      <ul role="list">
+        <li>
+          <figure>
+            <blockquote><p>The best flat white in town, and the croissants are worth the early start.</p></blockquote>
+            <figcaption>Sample reviewer A</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <blockquote><p>Calm, friendly and never rushed. My favourite place to read on a Sunday.</p></blockquote>
+            <figcaption>Sample reviewer B</figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <blockquote><p>The Stone Bowl is a proper lunch. Great for a quick meeting, too.</p></blockquote>
+            <figcaption>Sample reviewer C</figcaption>
+          </figure>
+        </li>
+      </ul>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <h3>Do you offer vegan and gluten-free options?</h3>
+        <p>Yes. We offer plant-based milks, and several bakery and lunch items are vegan or gluten free. Ask at the counter.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I bring my laptop?</h3>
+        <p>Of course. Wi-Fi is free for customers, and we have plenty of power sockets.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are dogs allowed?</h3>
+        <p>Well-behaved dogs are welcome on our outdoor terrace.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you take bookings?</h3>
+        <p>We keep most tables for walk-ins. For groups of six or more, please get in touch using the form below.</p>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>This is a demo form. It does not send messages.</p>
+
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button class="button" type="submit">Send message</button>
+      </form>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <address>
+      Cedar &amp; Stone Café (fictional)<br>
+      12 Example Street, Sampletown<br>
+      <a href="tel:+10000000000">+1 000 000 0000</a><br>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </address>
+    <ul role="list">
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Facebook</a></li>
+    </ul>
+    <p>&copy; 2026 Cedar &amp; Stone Café. Sample content for a portfolio project.</p>
+  </footer>
 </body>
 </html>

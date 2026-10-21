@@ -551,11 +551,16 @@ main > .hero {
 main > .hours-band {
   display: grid;
   gap: var(--space-4);
-  align-items: start;
+  align-items: center;
   width: 100%;
+  padding-block: var(--space-5);
   padding-inline: max(var(--gutter), (100% - var(--container-max)) / 2);
   background: var(--color-espresso);
   color: var(--color-ivory);
+}
+
+.hours-band .eyebrow {
+  margin-bottom: var(--space-2);
 }
 
 .hours-table {
@@ -565,18 +570,13 @@ main > .hours-band {
 
 .hours-table th,
 .hours-table td {
-  padding: var(--space-3) 0;
+  padding: var(--space-2) 0;
   border-bottom: 1px solid rgb(246 240 228 / 20%);
   text-align: left;
 }
 
-.hours-table thead th {
-  padding-top: 0;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-sand);
+.hours-table tbody tr:first-child > * {
+  border-top: 1px solid rgb(246 240 228 / 20%);
 }
 
 .hours-table tbody th {
@@ -590,7 +590,6 @@ main > .hours-band {
   font-variant-numeric: tabular-nums;
 }
 
-.hours-table th:last-child,
 .hours-table td {
   text-align: right;
 }
@@ -609,10 +608,6 @@ main > .hours-band {
   main > .hours-band {
     grid-template-columns: 5fr 7fr;
     gap: var(--space-6);
-  }
-
-  .hours-table td {
-    font-size: var(--text-xl);
   }
 }
 

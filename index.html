@@ -132,55 +132,55 @@
 
       <ul id="menu-list" role="list">
         <li class="menu-card" data-category="coffee">
-          <img src="images/menu/flat-white.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/flat-white.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Flat White</h3>
           <p>Double espresso with silky steamed milk.</p>
           <p class="price">$3.80</p>
         </li>
         <li class="menu-card" data-category="coffee">
-          <img src="images/menu/cedar-latte.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/cedar-latte.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Cedar Latte</h3>
           <p>House blend, steamed milk and a touch of maple.</p>
           <p class="price">$4.20</p>
         </li>
         <li class="menu-card" data-category="coffee">
-          <img src="images/menu/cold-brew.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/cold-brew.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Cold Brew</h3>
           <p>Steeped for 18 hours and served over ice.</p>
           <p class="price">$4.00</p>
         </li>
         <li class="menu-card" data-category="bakery">
-          <img src="images/menu/butter-croissant.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/butter-croissant.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Butter Croissant</h3>
           <p>Flaky, golden and baked fresh each morning.</p>
           <p class="price">$3.50</p>
         </li>
         <li class="menu-card" data-category="bakery">
-          <img src="images/menu/cardamom-bun.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/cardamom-bun.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Cardamom Bun</h3>
           <p>Soft, spiced and finished with pearl sugar.</p>
           <p class="price">$3.90</p>
         </li>
         <li class="menu-card" data-category="bakery">
-          <img src="images/menu/lemon-polenta-cake.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/lemon-polenta-cake.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Lemon Polenta Cake</h3>
           <p>Moist, zesty and gluten free.</p>
           <p class="price">$4.50</p>
         </li>
         <li class="menu-card" data-category="lunch">
-          <img src="images/menu/roasted-veg-sandwich.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/roasted-veg-sandwich.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Roasted Veg Sandwich</h3>
           <p>Sourdough, roasted vegetables, hummus and rocket.</p>
           <p class="price">$8.50</p>
         </li>
         <li class="menu-card" data-category="lunch">
-          <img src="images/menu/soup-of-the-day.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/soup-of-the-day.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Soup of the Day</h3>
           <p>Made in-house and served with warm bread.</p>
           <p class="price">$7.00</p>
         </li>
         <li class="menu-card" data-category="lunch">
-          <img src="images/menu/stone-bowl.svg" alt="" width="160" height="160" loading="lazy" decoding="async">
+          <img src="images/menu/stone-bowl.webp" alt="" width="360" height="360" loading="lazy" decoding="async">
           <h3>Stone Bowl</h3>
           <p>Grains, greens, soft egg and tahini dressing.</p>
           <p class="price">$10.50</p>
@@ -242,31 +242,34 @@
     </section>
 
     <section id="contact" class="band" aria-labelledby="contact-title">
-      <div class="contact-intro">
-        <p class="eyebrow"><span class="numeral" aria-hidden="true">VI</span>Get in touch</p>
-        <h2 id="contact-title">Contact</h2>
-        <p class="section-note">This is a demo form. It does not send messages.</p>
-      </div>
+      <div class="contact-card">
+        <div class="contact-intro">
+          <p class="eyebrow"><span class="numeral" aria-hidden="true">VI</span>Get in touch</p>
+          <h2 id="contact-title">Contact</h2>
+          <p class="contact-lead">Groups of six or more: please get in touch using this form.</p>
+          <p class="section-note">This is a demo form. It does not send messages.</p>
+        </div>
 
-      <form id="contact-form" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
-          <p class="field-error" id="name-error"></p>
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error" required>
-          <p class="field-error" id="email-error"></p>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" aria-describedby="message-error" required></textarea>
-          <p class="field-error" id="message-error"></p>
-        </div>
-        <button class="button" type="submit">Send message</button>
-        <p id="form-status" class="form-status" role="status"></p>
-      </form>
+        <form id="contact-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-error" required>
+            <p class="field-error" id="name-error"></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-error" required>
+            <p class="field-error" id="email-error"></p>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" aria-describedby="message-error" required></textarea>
+            <p class="field-error" id="message-error"></p>
+          </div>
+          <button class="button" type="submit">Send message</button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -281,6 +284,21 @@
     <ul class="project-links" role="list" aria-label="Project links">
       <li><a href="https://github.com/Mustypro137/cedar-and-stone-cafe">View source on GitHub</a></li>
     </ul>
+    <details class="credits">
+      <summary>Photo credits</summary>
+      <p>Menu photographs are illustrative and come from Wikimedia Commons.</p>
+      <ul role="list">
+        <li>Flat White: &ldquo;Charlecote Park flat white coffee Warwickshire England&rdquo; by Acabashi, <a href="https://commons.wikimedia.org/wiki/File:Charlecote_Park_flat_white_coffee_Warwickshire_England.jpg">CC BY-SA 4.0</a></li>
+        <li>Cedar Latte: &ldquo;Chai Latte Composition (39244770030)&rdquo; by Theo Crazzolara, <a href="https://commons.wikimedia.org/wiki/File:Chai_Latte_Composition_(39244770030).jpg">CC BY 2.0</a></li>
+        <li>Cold Brew: &ldquo;Cold brew coffee from Kafi Cafe in Fitzrovia (49905675357)&rdquo; by Bex Walton from London, England, <a href="https://commons.wikimedia.org/wiki/File:Cold_brew_coffee_from_Kafi_Cafe_in_Fitzrovia_(49905675357).jpg">CC BY 2.0</a></li>
+        <li>Butter Croissant: &ldquo;00 Croissant. Yum&rdquo; by Mark Mitchell, <a href="https://commons.wikimedia.org/wiki/File:00_Croissant._Yum.jpg">CC BY 2.0</a></li>
+        <li>Cardamom Bun: &ldquo;Sesame &amp; Cardamom Morning Bun - GAIL&#x27;s Bakery 2026-03-26&rdquo; by Andy Li, <a href="https://commons.wikimedia.org/wiki/File:Sesame_%26_Cardamom_Morning_Bun_-_GAIL%27s_Bakery_2026-03-26.jpg">CC0</a></li>
+        <li>Lemon Polenta Cake: &ldquo;Lemon and polenta cake&rdquo; by Alpha from Melbourne, Australia, <a href="https://commons.wikimedia.org/wiki/File:Lemon_and_polenta_cake.jpg">CC BY-SA 2.0</a></li>
+        <li>Roasted Veg Sandwich: &ldquo;Halloumi &amp; Roasted Vegetables sandwich - Sunbirds 2023-09-14&rdquo; by Andy Li, <a href="https://commons.wikimedia.org/wiki/File:Halloumi_%26_Roasted_Vegetables_sandwich_-_Sunbirds_2023-09-14.jpg">CC0</a></li>
+        <li>Soup of the Day: &ldquo;Cream of Tomato Soup with Brie Toast&rdquo; by Thriving Vegetarian, <a href="https://commons.wikimedia.org/wiki/File:Cream_of_Tomato_Soup_with_Brie_Toast.jpg">CC BY 2.0</a></li>
+        <li>Stone Bowl: &ldquo;Korean cuisine-BBQ Chicken Dolsot Bibimbap&rdquo; by Alpha, <a href="https://commons.wikimedia.org/wiki/File:Korean_cuisine-BBQ_Chicken_Dolsot_Bibimbap.jpg">CC BY-SA 2.0</a></li>
+      </ul>
+    </details>
     <p class="footer-legal">&copy; 2026 Cedar &amp; Stone Café. Sample content for a portfolio project.</p>
   </footer>
 </body>

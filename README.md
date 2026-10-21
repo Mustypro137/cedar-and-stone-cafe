@@ -17,9 +17,9 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - Menu as typographic rows with working category filters
 - Customer reviews (clearly marked as fictional)
 - Interactive FAQ accordion
-- Contact form with client-side validation (demo only, it does not send messages)
+- Contact form in a two-panel card (midnight-blue panel with a fan ornament beside the form) with client-side validation (demo only, it does not send messages)
 - Framed café photograph between the hero and the About section
-- Footer with contact information, a link to this repository and a band of gold diamonds
+- Footer with contact information, a link to this repository, photo credits and a band of gold diamonds
 - Link-preview tags (Open Graph and Twitter card) so shared links show a title and photo
 - Smooth anchor scrolling that accounts for the fixed header
 
@@ -28,7 +28,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - **Palette:** near-black `#0A0A0A`, champagne text `#F2F0E4`, card `#141414`, gold `#D4AF37` (hover `#F2E8C4`), midnight blue `#1E3D59` and muted `#888`, all defined once as CSS custom properties in `style.css`. Gold is kept for headings, borders, labels and actions.
 - **Type:** Marcellus for headings (uppercase, tracked) and Josefin Sans for body text, both self-hosted (SIL OFL).
 - **Art Deco details (all CSS, no image files):** diagonal crosshatch backgrounds, a fine film grain, a sunburst behind the hero, diamonds, stepped corner brackets, a double gold frame, Roman-numeral section labels (I to VI), gold dividers that draw in, and a diamond lattice band above the footer.
-- **Imagery:** a framed café photograph below the hero (`images/cafe-banner.webp` at 19:6 from tablet up, `images/cafe-banner-mobile.webp` at 2:1 on phones, swapped with `<picture>`), plus the hero illustration `images/hero.svg`. To change the photo, replace those two files and the `alt` text. Each menu item has a small gold line-art picture in `images/menu/` (SVG); to use photos instead, replace the files and keep the filenames, or change the `src` in `index.html`.
+- **Imagery:** a framed café photograph below the hero (`images/cafe-banner.webp` at 19:6 from tablet up, `images/cafe-banner-mobile.webp` at 2:1 on phones, swapped with `<picture>`), plus the hero illustration `images/hero.svg`. To change the photo, replace those two files and the `alt` text. Each menu item has a small square photo in `images/menu/` (360x360 WebP, lazy-loaded). These are illustrative photographs from Wikimedia Commons; their authors and licences are listed under "Photo credits" in the footer. Replace a file (same name) to use your own photo.
 - **Motion:** about 300 ms transitions (buttons, links, cards, FAQ) and a gentle scroll reveal, all switched off by `prefers-reduced-motion`.
 
 ## Accessibility and performance
@@ -71,7 +71,7 @@ images/hero.svg              hero illustration
 images/cafe-banner.webp      photo band, 19:6 (tablet and up)
 images/cafe-banner-mobile.webp  photo band, 2:1 (phones)
 images/og-image.jpg          link-preview image (1200x629)
-images/menu/*.svg            one line-art picture per menu item (9)
+images/menu/*.webp           one photo per menu item (9, credited in the footer)
 fonts/                       Marcellus and Josefin Sans, with their OFL licences
 README.md
 LICENSE
@@ -79,4 +79,4 @@ LICENSE
 
 ## License
 
-MIT. See [LICENSE](LICENSE). The café photograph was supplied by the project owner, who is responsible for its usage rights. The Marcellus and Josefin Sans font files are licensed separately under the SIL Open Font License; see `fonts/OFL-*.txt`.
+MIT. See [LICENSE](LICENSE). The café photograph was supplied by the project owner, who is responsible for its usage rights. The menu photographs keep their own Creative Commons licences (CC0, CC BY and CC BY-SA); see the credits in the footer. The Marcellus and Josefin Sans font files are licensed separately under the SIL Open Font License; see `fonts/OFL-*.txt`.

@@ -526,7 +526,7 @@ h2.reveal:not(.is-visible)::after {
 /* Stepped corner brackets on the top-left and bottom-right of a framed block. */
 .frame,
 .review-list figure,
-#contact-form {
+.contact-card {
   position: relative;
 }
 
@@ -534,8 +534,8 @@ h2.reveal:not(.is-visible)::after {
 .frame::after,
 .review-list figure::before,
 .review-list figure::after,
-#contact-form::before,
-#contact-form::after {
+.contact-card::before,
+.contact-card::after {
   --line: linear-gradient(var(--color-gold), var(--color-gold));
 
   content: "";
@@ -561,12 +561,12 @@ h2.reveal:not(.is-visible)::after {
   transform: rotate(180deg);
 }
 
-#contact-form::before {
+.contact-card::before {
   top: -0.5rem;
   left: -0.5rem;
 }
 
-#contact-form::after {
+.contact-card::after {
   right: -0.5rem;
   bottom: -0.5rem;
   transform: rotate(180deg);
@@ -1194,18 +1194,50 @@ main > .hours-band {
   gap: var(--space-4);
 }
 
-#contact {
+/* One card: a midnight-blue panel with a fan ornament beside the form. */
+.contact-card {
   display: grid;
-  gap: var(--space-4);
+  border: 1px solid var(--color-gold);
+  background: var(--color-bg);
+}
+
+.contact-intro {
+  position: relative;
+  min-height: 16rem;
+  padding: var(--space-4) var(--space-3) 9rem;
+  overflow: hidden;
+  background: var(--color-midnight);
+}
+
+/* Fan of gold rays rising from the bottom edge. */
+.contact-intro::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 8rem;
+  background: repeating-conic-gradient(from -90deg at 50% 100%, rgb(212 175 55 / 55%) 0 1.5deg, transparent 1.5deg 9deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 100%, #000 0, transparent 70%);
+  mask-image: radial-gradient(circle at 50% 100%, #000 0, transparent 70%);
+  pointer-events: none;
+}
+
+.contact-lead {
+  max-width: 22rem;
+  margin-top: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  line-height: 1.4;
+}
+
+.contact-intro .section-note {
+  color: var(--color-cream-dim);
 }
 
 #contact-form {
   display: grid;
+  align-content: center;
   gap: var(--space-3);
-  max-width: 44rem;
-  padding: var(--space-3);
-  border: 1px solid var(--color-rule);
-  background: var(--color-bg);
+  padding: var(--space-4) var(--space-3);
 }
 
 .field label {
@@ -1221,13 +1253,14 @@ main > .hours-band {
 .field input,
 .field textarea {
   width: 100%;
-  min-height: 3rem;
-  padding: 0.75rem var(--space-2);
-  border: 1px solid rgb(212 175 55 / 45%);
+  min-height: 3.25rem;
+  padding: 0.875rem var(--space-2);
+  border: 0;
+  border-bottom: 2px solid rgb(212 175 55 / 55%);
   border-radius: 0;
-  background: rgb(242 240 228 / 4%);
+  background: rgb(242 240 228 / 6%);
   font-size: 1.0625rem;
-  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  transition: border-color var(--transition), background var(--transition);
 }
 
 .field textarea {
@@ -1237,19 +1270,17 @@ main > .hours-band {
 
 .field input:hover,
 .field textarea:hover {
-  border-color: var(--color-gold);
+  border-bottom-color: var(--color-gold);
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: var(--color-gold-light);
-  background: rgb(242 240 228 / 8%);
-  box-shadow: 0 0 0 1px var(--color-gold-light);
+  border-bottom-color: var(--color-gold-light);
+  background: rgb(242 240 228 / 10%);
 }
 
 .field [aria-invalid="true"] {
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 1px var(--color-error);
+  border-bottom-color: var(--color-error);
 }
 
 .field-error {
@@ -1268,31 +1299,23 @@ main > .hours-band {
   width: 100%;
 }
 
-@media (min-width: 48rem) {
-  #contact-form {
-    grid-template-columns: repeat(2, 1fr);
-    padding: var(--space-4);
-  }
-
-  /* Name and email share a row; the message, button and status span both columns. */
-  #contact-form .field:nth-of-type(3),
-  #contact-form .button,
-  #contact-form .form-status {
-    grid-column: 1 / -1;
-  }
-
-  #contact-form .button {
-    width: auto;
-    justify-self: start;
-  }
-}
-
 @media (min-width: 56rem) {
-  #faq,
-  #contact {
+  #faq {
     grid-template-columns: 4fr 8fr;
     gap: var(--space-6);
     align-items: start;
+  }
+
+  .contact-card {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .contact-intro {
+    padding: var(--space-5) var(--space-4) 10rem;
+  }
+
+  #contact-form {
+    padding: var(--space-5) var(--space-5);
   }
 }
 
@@ -1354,6 +1377,38 @@ main > .hours-band {
   text-transform: uppercase;
 }
 
+.credits {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.credits summary {
+  display: inline-block;
+  padding-block: 0.25rem;
+  color: var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.credits summary:hover {
+  color: var(--color-gold-light);
+}
+
+.credits p,
+.credits ul {
+  margin-top: var(--space-1);
+}
+
+.credits li {
+  padding-block: 0.125rem;
+}
+
+.credits a {
+  padding-block: 0;
+}
+
 .footer-legal {
   padding-top: var(--space-3);
   border-top: 1px solid var(--color-rule);
@@ -1368,6 +1423,7 @@ main > .hours-band {
   }
 
   .footer-brand,
+  .credits,
   .footer-legal {
     grid-column: 1 / -1;
   }

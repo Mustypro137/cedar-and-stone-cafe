@@ -6,6 +6,8 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 **Status:** complete (Milestone 11 of 11: accessibility, responsive and performance pass).
 
+**Live site:** https://mustypro137.github.io/cedar-and-stone-cafe/
+
 ## Features
 
 - Responsive navigation

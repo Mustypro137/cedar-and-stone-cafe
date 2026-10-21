@@ -201,25 +201,45 @@ main > section {
 /* 5. Components
    -------------------------------------------------------------------------- */
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
   padding: var(--space-2) var(--space-4);
-  border: 0;
+  border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  background: var(--color-olive);
-  color: var(--color-white);
+  background: var(--color-espresso);
+  color: var(--color-ivory);
+  font-size: 0.9375rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--transition);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.button::after {
+  content: "\2192";
+  content: "\2192" / "";
+  transition: transform var(--transition);
 }
 
 .button:hover {
-  background: var(--color-olive-dark);
+  background: var(--color-olive);
+}
+
+.button:hover::after {
+  transform: translateX(0.25rem);
+}
+
+.button:active {
+  transform: translateY(1px);
 }
 
 .button-light {
   background: var(--color-ivory);
-  color: var(--color-olive-dark);
+  color: var(--color-espresso);
 }
 
 .button-light:hover {
@@ -227,7 +247,7 @@ main > section {
 }
 
 .button-outline {
-  border: 2px solid currentcolor;
+  border-color: currentcolor;
   background: transparent;
   color: var(--color-white);
 }
@@ -247,47 +267,81 @@ main > section {
   justify-content: space-between;
   gap: var(--space-2) var(--space-4);
   min-height: var(--header-height);
-  padding: var(--space-2) var(--gutter);
+  padding: var(--space-2) max(var(--gutter), (100% - var(--container-max)) / 2);
   background: var(--color-surface);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid rgb(43 29 20 / 12%);
 }
 
 .brand {
   font-family: var(--font-heading);
   font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--color-olive);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
   text-decoration: none;
+  transition: color var(--transition);
+}
+
+.brand:hover {
+  color: var(--color-olive);
 }
 
 .site-nav ul {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-1) var(--space-4);
 }
 
-.site-nav a {
+.site-nav a:not(.button) {
+  position: relative;
   display: inline-block;
   padding: var(--space-2) 0;
   color: var(--color-text);
+  font-size: 0.9375rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  transition: color var(--transition);
 }
 
-.site-nav a:hover {
-  color: var(--color-accent);
-  border-bottom-color: currentcolor;
+.site-nav a:not(.button)::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0.25rem;
+  height: 1px;
+  background: currentcolor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.site-nav a:not(.button):hover {
+  color: var(--color-olive);
+}
+
+.site-nav a:not(.button):hover::after,
+.site-nav a:not(.button):focus-visible::after {
+  transform: scaleX(1);
 }
 
 .nav-toggle {
+  min-height: 2.75rem;
   padding: var(--space-2) var(--space-3);
-  border: 2px solid var(--color-olive);
+  border: 1px solid var(--color-espresso);
   border-radius: var(--radius-sm);
   background: transparent;
-  color: var(--color-olive);
+  color: var(--color-espresso);
+  font-size: 0.9375rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+.nav-toggle[aria-expanded="true"] {
+  background: var(--color-espresso);
+  color: var(--color-ivory);
 }
 
 @media (max-width: 47.99rem) {
@@ -298,10 +352,33 @@ main > section {
 
   .js .site-nav.is-open {
     display: block;
+    padding-bottom: var(--space-3);
   }
 
   .js .site-nav ul {
     flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .js .site-nav li {
+    border-top: 1px solid rgb(43 29 20 / 12%);
+  }
+
+  .js .site-nav a:not(.button) {
+    display: block;
+    padding: var(--space-3) 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+  }
+
+  .js .site-nav a:not(.button)::after {
+    display: none;
+  }
+
+  .js .site-nav .button {
+    width: 100%;
+    margin-top: var(--space-3);
   }
 }
 

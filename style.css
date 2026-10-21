@@ -643,6 +643,25 @@ main > .hero {
   }
 }
 
+.photo-band {
+  width: min(100% - 2 * var(--gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+/* Matching crops: 2:1 on phones, 19:6 from tablet up. The aspect ratio reserves the space. */
+.photo-band img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+  background: var(--color-card);
+}
+
+@media (min-width: 48rem) {
+  .photo-band img {
+    aspect-ratio: 19 / 6;
+  }
+}
+
 .about {
   display: grid;
   gap: var(--space-5);

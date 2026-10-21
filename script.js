@@ -149,7 +149,7 @@ function initReveal() {
 
   // Classes are added here, so without JavaScript everything simply stays visible.
   const targets = document.querySelectorAll(
-    'main > section:not(.hero) h2, .about-lead, .about-facts, .menu-filters, #menu-list, .review-list li, .faq-list, #contact-form',
+    'main > section:not(.hero) h2, .photo-band .frame, .about-lead, .about-facts, .menu-filters, #menu-list, .review-list li, .faq-list, #contact-form',
   );
 
   const observer = new IntersectionObserver((entries) => {

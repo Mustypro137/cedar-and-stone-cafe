@@ -26,7 +26,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - **Palette:** near-black `#0A0A0A`, champagne text `#F2F0E4`, card `#141414`, gold `#D4AF37` (hover `#F2E8C4`), midnight blue `#1E3D59` and muted `#888`, all defined once as CSS custom properties in `style.css`. Gold is kept for headings, borders, labels and actions.
 - **Type:** Marcellus for headings (uppercase, tracked) and Josefin Sans for body text, both self-hosted (SIL OFL).
 - **Art Deco details (all CSS, no image files):** diagonal crosshatch backgrounds, a sunburst behind the hero, diamonds, stepped corner brackets, a double gold frame, Roman-numeral section labels (I to VI), gold dividers that draw in, and a diamond lattice band above the footer.
-- **Imagery:** one illustration, `images/hero.svg`. There are no photographs. To use a photo, replace `src` and `alt` on the hero `<img>` (it keeps the frame).
+- **Imagery:** a framed café photograph below the hero (`images/cafe-banner.webp` at 19:6 from tablet up, `images/cafe-banner-mobile.webp` at 2:1 on phones, swapped with `<picture>`), plus the hero illustration `images/hero.svg`. To change the photo, replace those two files and the `alt` text.
 - **Motion:** about 300 ms transitions (buttons, links, cards, FAQ) and a gentle scroll reveal, all switched off by `prefers-reduced-motion`.
 
 ## Accessibility and performance

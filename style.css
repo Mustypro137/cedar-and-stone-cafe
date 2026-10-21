@@ -470,3 +470,46 @@ main > .hero {
   font-weight: 600;
   color: var(--color-ink-muted);
 }
+
+#faq .faq-item {
+  max-width: 45rem;
+  margin-top: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item p {
+  margin-top: var(--space-2);
+  color: var(--color-ink-muted);
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-question::after {
+  content: "+";
+  flex-shrink: 0;
+  font-size: var(--text-xl);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.faq-question[aria-expanded="true"]::after {
+  content: "\2212";
+}

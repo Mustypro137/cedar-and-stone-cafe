@@ -57,8 +57,34 @@ function initMenuFilter() {
   });
 }
 
+function initFaq() {
+  document.querySelectorAll('.faq-item').forEach((item, index) => {
+    const heading = item.querySelector('h3');
+    const panel = item.querySelector('p');
+    if (!heading || !panel) return;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'faq-question';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', `faq-panel-${index}`);
+    button.textContent = heading.textContent;
+    heading.replaceChildren(button);
+
+    panel.id = `faq-panel-${index}`;
+    panel.hidden = true;
+
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   // Feature initialisers are added here, one per milestone.
   initNav();
   initMenuFilter();
+  initFaq();
 });

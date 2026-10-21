@@ -525,14 +525,17 @@ h2.reveal:not(.is-visible)::after {
 
 /* Stepped corner brackets on the top-left and bottom-right of a framed block. */
 .frame,
-.review-list figure {
+.review-list figure,
+#contact-form {
   position: relative;
 }
 
 .frame::before,
 .frame::after,
 .review-list figure::before,
-.review-list figure::after {
+.review-list figure::after,
+#contact-form::before,
+#contact-form::after {
   --line: linear-gradient(var(--color-gold), var(--color-gold));
 
   content: "";
@@ -553,6 +556,17 @@ h2.reveal:not(.is-visible)::after {
 }
 
 .frame::after {
+  right: -0.5rem;
+  bottom: -0.5rem;
+  transform: rotate(180deg);
+}
+
+#contact-form::before {
+  top: -0.5rem;
+  left: -0.5rem;
+}
+
+#contact-form::after {
   right: -0.5rem;
   bottom: -0.5rem;
   transform: rotate(180deg);
@@ -968,15 +982,29 @@ main > .hours-band {
 
 /* Name, dotted leader and price share one line; the description sits beneath. */
 .menu-card {
+  --menu-img: 4.5rem;
+
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: var(--menu-img) auto 1fr auto;
   grid-template-areas:
-    "name leader price"
-    "desc desc desc";
+    "img name leader price"
+    "img desc desc desc";
   column-gap: var(--space-2);
   align-items: baseline;
   padding-block: var(--space-2);
   border-bottom: 1px solid var(--color-rule);
+}
+
+.menu-card img {
+  grid-area: img;
+  align-self: center;
+  width: var(--menu-img);
+  aspect-ratio: 1;
+  object-fit: cover;
+  padding: 0.125rem;
+  border: 1px solid rgb(212 175 55 / 45%);
+  background: var(--color-card);
+  transition: border-color var(--transition);
 }
 
 .menu-card h3 {
@@ -1015,8 +1043,15 @@ main > .hours-band {
   color: var(--color-gold-light);
 }
 
-.menu-card:hover::before {
+.menu-card:hover::before,
+.menu-card:hover img {
   border-color: var(--color-gold);
+}
+
+@media (min-width: 48rem) {
+  .menu-card {
+    --menu-img: 6rem;
+  }
 }
 
 @media (min-width: 56rem) {
@@ -1167,29 +1202,32 @@ main > .hours-band {
 #contact-form {
   display: grid;
   gap: var(--space-3);
-  max-width: 36rem;
+  max-width: 44rem;
+  padding: var(--space-3);
+  border: 1px solid var(--color-rule);
+  background: var(--color-bg);
 }
 
 .field label {
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
   font-size: 0.8125rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: var(--color-gold);
 }
 
 .field input,
 .field textarea {
   width: 100%;
-  padding: var(--space-1) 0;
-  border: 0;
-  border-bottom: 1px solid var(--color-gold);
+  min-height: 3rem;
+  padding: 0.75rem var(--space-2);
+  border: 1px solid rgb(212 175 55 / 45%);
   border-radius: 0;
-  background: transparent;
-  font-size: 1.125rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background: rgb(242 240 228 / 4%);
+  font-size: 1.0625rem;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .field textarea {
@@ -1197,15 +1235,21 @@ main > .hours-band {
   resize: vertical;
 }
 
+.field input:hover,
+.field textarea:hover {
+  border-color: var(--color-gold);
+}
+
 .field input:focus,
 .field textarea:focus {
-  border-bottom-color: var(--color-gold-light);
-  box-shadow: 0 1px 0 var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  background: rgb(242 240 228 / 8%);
+  box-shadow: 0 0 0 1px var(--color-gold-light);
 }
 
 .field [aria-invalid="true"] {
-  border-bottom-color: var(--color-error);
-  box-shadow: 0 1px 0 var(--color-error);
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 1px var(--color-error);
 }
 
 .field-error {
@@ -1221,7 +1265,26 @@ main > .hours-band {
 }
 
 #contact-form .button {
-  justify-self: start;
+  width: 100%;
+}
+
+@media (min-width: 48rem) {
+  #contact-form {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--space-4);
+  }
+
+  /* Name and email share a row; the message, button and status span both columns. */
+  #contact-form .field:nth-of-type(3),
+  #contact-form .button,
+  #contact-form .form-status {
+    grid-column: 1 / -1;
+  }
+
+  #contact-form .button {
+    width: auto;
+    justify-self: start;
+  }
 }
 
 @media (min-width: 56rem) {

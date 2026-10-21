@@ -28,7 +28,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 - **Palette:** near-black `#0A0A0A`, champagne text `#F2F0E4`, card `#141414`, gold `#D4AF37` (hover `#F2E8C4`), midnight blue `#1E3D59` and muted `#888`, all defined once as CSS custom properties in `style.css`. Gold is kept for headings, borders, labels and actions.
 - **Type:** Marcellus for headings (uppercase, tracked) and Josefin Sans for body text, both self-hosted (SIL OFL).
 - **Art Deco details (all CSS, no image files):** diagonal crosshatch backgrounds, a fine film grain, a sunburst behind the hero, diamonds, stepped corner brackets, a double gold frame, Roman-numeral section labels (I to VI), gold dividers that draw in, and a diamond lattice band above the footer.
-- **Imagery:** a framed café photograph below the hero (`images/cafe-banner.webp` at 19:6 from tablet up, `images/cafe-banner-mobile.webp` at 2:1 on phones, swapped with `<picture>`), plus the hero illustration `images/hero.svg`. To change the photo, replace those two files and the `alt` text.
+- **Imagery:** a framed café photograph below the hero (`images/cafe-banner.webp` at 19:6 from tablet up, `images/cafe-banner-mobile.webp` at 2:1 on phones, swapped with `<picture>`), plus the hero illustration `images/hero.svg`. To change the photo, replace those two files and the `alt` text. Each menu item has a small gold line-art picture in `images/menu/` (SVG); to use photos instead, replace the files and keep the filenames, or change the `src` in `index.html`.
 - **Motion:** about 300 ms transitions (buttons, links, cards, FAQ) and a gentle scroll reveal, all switched off by `prefers-reduced-motion`.
 
 ## Accessibility and performance
@@ -71,6 +71,7 @@ images/hero.svg              hero illustration
 images/cafe-banner.webp      photo band, 19:6 (tablet and up)
 images/cafe-banner-mobile.webp  photo band, 2:1 (phones)
 images/og-image.jpg          link-preview image (1200x629)
+images/menu/*.svg            one line-art picture per menu item (9)
 fonts/                       Marcellus and Josefin Sans, with their OFL licences
 README.md
 LICENSE

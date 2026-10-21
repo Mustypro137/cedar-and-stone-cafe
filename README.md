@@ -4,7 +4,7 @@ A responsive, accessible website for a **fictional** local café, built as a fro
 
 > Cedar & Stone Café is not a real business. All menu items, prices, reviews and contact details are sample content.
 
-**Status:** work in progress (Milestone 6 of 11: menu cards and category filters).
+**Status:** work in progress (Milestone 7 of 11: customer reviews).
 
 ## Planned features
 
